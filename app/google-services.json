@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "503553002861",
+    "project_id": "firebase-ticketgo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503553002861:android:21133bd781c19f68",
+        "android_client_info": {
+          "package_name": "com.example.taipv.ticketgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503553002861-e1hvissi9i28kjkr4cprbermig0leqct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taipv.ticketgo",
+            "certificate_hash": "557aedd071400c7f8226b05d9c27242f8df3c795"
+          }
+        },
+        {
+          "client_id": "503553002861-ekgd7ua05c9amqs16j5g025pleh7ca9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZnh6bkcfIPkjPTdGGfXonJeq4pSahYPM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
