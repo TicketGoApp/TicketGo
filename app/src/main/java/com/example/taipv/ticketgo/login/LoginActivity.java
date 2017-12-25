@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.taipv.ticketgo.R;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 
 import org.json.JSONObject;
 
@@ -12,12 +15,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
-
+public static String TAG="xxx";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
+
 //    private Bundle getFacebookData(JSONObject object) {
 //        Bundle bundle = new Bundle();
 //
