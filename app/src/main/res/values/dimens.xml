@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="lbl_directory">14dp</dimen>
+    <dimen name="lbl_movie_name">28dp</dimen>
+    <dimen name="img_poster_height">220dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="dp10">10dp</dimen>
@@ -103,4 +107,5 @@
     <dimen name="dp980">980dp</dimen>
     <dimen name="dp990">990dp</dimen>
     <dimen name="dp1000">1000dp</dimen>
+    <dimen name="dp16">16dp</dimen>
 </resources>

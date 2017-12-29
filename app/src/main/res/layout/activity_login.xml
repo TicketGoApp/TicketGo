@@ -4,6 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.taipv.ticketgo.login.LoginActivity">
+    android:background="@drawable/bg_login"
+
+    tools:context="com.example.taipv.ticketgo.view.activity.login.LoginActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:layout_width="@dimen/dp340"
+        android:layout_height="@dimen/dp60"
+        android:layout_marginTop="@dimen/dp240"
+        android:background="#80000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/email"
+        android:hint="@string/e_mail_address"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableStart="@drawable/email">
+
+    </EditText>
+
+    <EditText
+        android:layout_width="@dimen/dp340"
+        android:layout_height="@dimen/dp60"
+        android:layout_marginTop="@dimen/dp310"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#80000000"
+        android:drawableLeft="@drawable/password"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableStart="@drawable/password" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:textColor="#ffffff"
+        android:background="@drawable/bg_btn_login"
+        android:layout_width="@dimen/dp340"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:layout_marginTop="@dimen/dp390"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.facebook.login.widget.LoginButton
+        xmlns:facebook="http://schemas.android.com/apk/res-auto"
+        facebook:com_facebook_login_text="Login with Facebook"
+        android:id="@+id/login_button"
+        android:layout_width="@dimen/dp340"
+        android:layout_height="@dimen/dp150"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp480"
+        android:layout_marginBottom="@dimen/dp30"
+        android:textSize="17sp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="@dimen/dp340"
+        android:layout_height="@dimen/dp100"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_marginTop="@dimen/dp550"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
