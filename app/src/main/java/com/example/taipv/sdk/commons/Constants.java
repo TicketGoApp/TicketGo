@@ -9,4 +9,14 @@ public class Constants {
     public static final String QRCODE="code";
     public static final String URL="https://api.androidhive.info/";
     public static final int ERROR_SESSION = 2 ;
+    public static final String SHARED_NAME = "mydata";
+    /*
+     * Error Code
+     * */
+    public static final int ERROR_NO_INTERNET = -3;
+    public static final int ERROR_UNKOW = -1;
+    public static final int ERROR_EMPTY = 404;
+    /*
+    * End Error Code
+    * */
 }
