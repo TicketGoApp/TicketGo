@@ -5,24 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.taipv.ticketgo.view.activity.CodeQR.QRCodeActivity">
+
     <fragment
         android:id="@+id/barcode_fragment"
         android:name="info.androidhive.barcode.BarcodeReader"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="63dp"
         app:auto_focus="true"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout_fb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:use_flash="false" />
+
     <info.androidhive.barcode.ScannerOverlay
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/scannerOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#44000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:line_color="#7323DC"
         app:line_speed="6"
         app:line_width="4"
         app:square_height="200"
-        app:square_width="200"/>
+        app:square_width="200" />
+
     <ImageView
         android:id="@+id/imgQR"
         android:layout_width="@dimen/dp300"
-        android:layout_height="@dimen/dp300" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="238dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout_fb"
+        app:layout_constraintStart_toStartOf="@+id/barcode_fragment"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_logout_fb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/logout_fb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgQR" />
 </android.support.constraint.ConstraintLayout>

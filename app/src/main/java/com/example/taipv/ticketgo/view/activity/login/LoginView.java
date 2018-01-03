@@ -5,12 +5,10 @@ package com.example.taipv.ticketgo.view.activity.login;
  */
 
 public interface LoginView {
-    void setErrorUser();
-    void setErrorPass();
     void networkError();
     void loginFailure();
     void loginSussess();
     void showProgressBar();
     void hideProgressBar();
-    void checkNetwork();
+    void loginned();
 }
