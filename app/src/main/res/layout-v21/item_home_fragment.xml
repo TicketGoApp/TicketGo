@@ -21,7 +21,7 @@
             <ImageView
                 android:id="@+id/img_ticket"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp110"
+                android:layout_height="@dimen/dp180"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"

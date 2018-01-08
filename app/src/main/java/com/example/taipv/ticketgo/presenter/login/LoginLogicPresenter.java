@@ -34,7 +34,6 @@ public class LoginLogicPresenter implements LoginImplPresenter {
         } else {
             loginView.loginSussess();
         }
-
     }
 
     @Override
@@ -54,11 +53,16 @@ public class LoginLogicPresenter implements LoginImplPresenter {
         String token=preferences.getString("tokenFB","");
 
         MyApplication.log("Sharepre",token);
-        if(userGet.equals("admin")&&passGet.equals("admin")){
-            loginView.loginned();
+        if(preferences!=null){
+            if(userGet.equals("admin")&&passGet.equals("admin")){
+                loginView.loginned();
+            }else {
+                return;
+            }
         }else {
             return;
         }
+
 
     }
 

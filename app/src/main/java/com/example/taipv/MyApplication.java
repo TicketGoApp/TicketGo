@@ -24,5 +24,6 @@ public class MyApplication extends Application {
     }
     public static void toast(String content){
         Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
+
     }
 }

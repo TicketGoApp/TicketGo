@@ -46,7 +46,7 @@ public class PrefUtil {
         editor.putString("fb_gender", gender);
         editor.putString("fb_profileURL", profileURL);
         editor.apply(); // This line is IMPORTANT !!!
-        Log.d("MyApp", "Shared Name : "+first_name+"\nLast Name : "+last_name+"\nEmail : "+email+"\nGender : "+gender+"\nProfile Pic : "+profileURL);
+        Log.d("MyApp", "Shared Name : "+first_name+"\nLast Name : "+last_name+"\nEmail : "+email+"\nGender : "+gender+"\nIProfileView Pic : "+profileURL);
     }
 
     public void getFacebookUserInfo(){

@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 loadFragment(fragment);
                 return true;
             case R.id.navigation_profile:
-                toolbar.setTitle("Profile");
+                toolbar.setTitle("IProfileView");
                 fragment = new Profile();
                 loadFragment(fragment);
                 return true;
