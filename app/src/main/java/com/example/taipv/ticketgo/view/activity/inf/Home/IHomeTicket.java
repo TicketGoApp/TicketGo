@@ -2,7 +2,7 @@ package com.example.taipv.ticketgo.view.activity.inf.Home;
 
 import android.app.Activity;
 
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
+import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.view.activity.inf.IBasicView;
 
 import java.util.List;
@@ -14,6 +14,6 @@ import java.util.List;
  */
 
 public interface IHomeTicket extends IBasicView {
-    void getSuccess(List<GetTicketHighlight>list);
+    void getSuccess(List<GetEventHot>list);
     Activity getActivity();
 }

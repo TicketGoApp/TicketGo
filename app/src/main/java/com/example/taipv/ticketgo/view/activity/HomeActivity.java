@@ -1,5 +1,6 @@
 package com.example.taipv.ticketgo.view.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,30 +14,45 @@ import android.widget.Toast;
 
 import com.example.taipv.MyApplication;
 import com.example.taipv.ticketgo.R;
+import com.example.taipv.ticketgo.model.GetInfoFB;
+import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
+import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.fragment.Home;
 import com.example.taipv.ticketgo.view.fragment.MyOder;
 import com.example.taipv.ticketgo.view.fragment.News;
 import com.example.taipv.ticketgo.view.fragment.Profile;
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,IProfileView {
     BottomNavigationView botnavi;
     private ActionBar toolbar;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     private final static String TAG_FRAGMENT2 = "TAG_FRAGMENT2";
     protected OnBackPressedListener onBackPressedListener;
-
+    ProfilePre profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         toolbar = getSupportActionBar();
-
+        profile=new ProfilePre(this);
         botnavi = findViewById(R.id.navigation);
         botnavi.setOnNavigationItemSelectedListener(this);
 
         toolbar.setTitle("Shop");
         loadFragment(new Home(), TAG_FRAGMENT);
+
+    }
+
+    private void getProfile() {
+        Intent intent=getIntent();
+        long id =intent.getLongExtra("id",-1);
+        String name=intent.getStringExtra("name");
+        String email=intent.getStringExtra("email");
+        String image=intent.getStringExtra("image");
+        profile.getToken(id, email, name, image);
+
+
     }
 
 /*    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -71,6 +87,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 toolbar.setTitle("IProfileView");
                 fragment = new Profile();
                 loadFragment(fragment, TAG_FRAGMENT2);
+                getProfile();
                 return true;
         }
         return false;
@@ -127,6 +144,47 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 //            super.onBackPressed();
 //
 //        }
+    }
+
+    @Override
+    public void onError(int code) {
+
+    }
+
+    @Override
+    public void showLongToast(String message) {
+
+    }
+
+    @Override
+    public void onEndSession() {
+
+    }
+
+    @Override
+    public void passData(long id, String email, String name, String image) {
+
+    }
+
+    @Override
+    public void onGetSuscess(GetInfoFB object) {
+        Fragment fragment=Profile.newInstance(object.getFacebook_id(),object.getEmail(),object.getName(),object.getImage());
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,fragment).commit();
+    }
+
+    @Override
+    public void onLogoutSuccess(boolean isSuccess) {
+
+    }
+
+    @Override
+    public void showProgressBar(int type) {
+
+    }
+
+    @Override
+    public Fragment getFragment() {
+        return null;
     }
 
     public interface OnBackPressedListener {

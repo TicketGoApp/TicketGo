@@ -9,13 +9,13 @@ import java.util.ArrayList;
  */
 
 public class GetListTicket {
-    ArrayList<GetTicketHighlight>list;
+    ArrayList<GetEventHot>list;
 
-    public ArrayList<GetTicketHighlight> getList() {
+    public ArrayList<GetEventHot> getList() {
         return list;
     }
 
-    public void setList(ArrayList<GetTicketHighlight> list) {
+    public void setList(ArrayList<GetEventHot> list) {
         this.list = list;
     }
 }

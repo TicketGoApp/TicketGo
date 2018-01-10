@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
     tools:context="com.example.taipv.ticketgo.view.fragment.Profile">
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,7 +28,7 @@
                 android:src="@drawable/cover" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/img_avatar"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="@dimen/dp100"
                 android:layout_alignParentTop="true"
@@ -36,12 +37,12 @@
                 android:src="@drawable/user" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/circleImageView"
-                android:layout_alignStart="@+id/circleImageView"
-                android:layout_below="@+id/circleImageView"
+                android:layout_alignLeft="@+id/img_avatar"
+                android:layout_alignStart="@+id/img_avatar"
+                android:layout_below="@+id/img_avatar"
                 android:layout_marginBottom="@dimen/dp10"
                 android:layout_marginTop="@dimen/dp10"
                 android:text="Your Name"
@@ -50,12 +51,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView"
-                android:layout_alignStart="@+id/textView"
-                android:layout_below="@+id/textView"
+                android:layout_alignLeft="@+id/tv_username"
+                android:layout_alignStart="@+id/tv_username"
+                android:layout_below="@+id/tv_username"
                 android:text="abc@email.com"
                 android:textColor="@color/black_75"
                 android:textSize="14sp"

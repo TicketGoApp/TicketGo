@@ -1,10 +1,13 @@
 package com.example.taipv.ticketgo.model.server;
 
+import android.util.Log;
+
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.AbsICmd;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
+import com.example.taipv.ticketgo.model.GetEvent;
+import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.network.ApiFactory;
-import com.example.taipv.ticketgo.network.IGetTicketHighlight;
+import com.example.taipv.ticketgo.network.IGetEvent;
 
 import java.util.List;
 
@@ -25,16 +28,22 @@ public abstract class HomeModel extends AbsICmd {
 
     @Override
     protected void invoke() {
-        IGetTicketHighlight getTicket=ApiFactory.getAPI(IGetTicketHighlight.class);
-        Call<List<GetTicketHighlight>>call=getTicket.getTicketHigh();
-        call.enqueue(new Callback<List<GetTicketHighlight>>() {
+        IGetEvent getTicket=ApiFactory.getAPIFB(IGetEvent.class);
+        Call<GetEvent>call=getTicket.getEvent();
+        call.enqueue(new Callback<GetEvent>() {
             @Override
-            public void onResponse(Call<List<GetTicketHighlight>> call, Response<List<GetTicketHighlight>> response) {
-                HomeModel.this.onSuccess(response.body());
-                MyApplication.log("test",response.body().get(1).getTitle());
+            public void onResponse(Call<GetEvent> call, Response<GetEvent> response) {
+                if(response.isSuccessful()){
+                    HomeModel.this.onSuccess(response.body().getEventHot());
+//                    Log.d("GetEvent", "onResponse: "+response.body().getEventHot().get(0).getName());
+                }else {
+                    MyApplication.log("GetEvent","null");
+                }
             }
+
             @Override
-            public void onFailure(Call<List<GetTicketHighlight>> call, Throwable t) {
+            public void onFailure(Call<GetEvent> call, Throwable t) {
+                Log.w("getevent", "onFailure: ");
             }
         });
     }
@@ -43,6 +52,6 @@ public abstract class HomeModel extends AbsICmd {
     protected void exception(String message) {
 
     }
-    protected abstract void onSuccess(List<GetTicketHighlight> list);
+    protected abstract void onSuccess(List<GetEventHot> list);
 
 }

@@ -4,10 +4,7 @@ package com.example.taipv.ticketgo.view.activity.inf.profile;
 import android.support.v4.app.Fragment;
 
 import com.example.taipv.ticketgo.model.GetInfoFB;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
 import com.example.taipv.ticketgo.view.activity.inf.IBasicView;
-
-import java.util.List;
 
 /**
  * Author: Phùng Tài NeverGiveUp

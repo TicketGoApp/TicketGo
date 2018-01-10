@@ -11,7 +11,8 @@ import com.bumptech.glide.Glide;
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.ItemClickListener;
 import com.example.taipv.ticketgo.R;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
+import com.example.taipv.ticketgo.model.GetEventHot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +20,15 @@ import java.util.List;
  * Created by taipv on 1/3/2018
  */
 
-public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class    HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG ="xxx" ;
     Context context;
-    List<GetTicketHighlight>listTicket;
+    List<GetEventHot>listTicket;
     private boolean isHideFirstLine;
      ItemClickListener itemClickListener;
     private final int EMPTY_TYPE = 0;
     private final int ITEM_TYPE = 1;
-    public HomeAdapter(Context context, List<GetTicketHighlight> listTicket) {
+    public HomeAdapter(Context context, List<GetEventHot> listTicket) {
         this.context = context;
         this.listTicket = listTicket;
 
@@ -51,9 +52,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if(holder instanceof ItemHoder){
             ItemHoder itemHoder= (ItemHoder) holder;
-                final GetTicketHighlight ticket=listTicket.get(position);
+                final GetEventHot ticket=listTicket.get(position);
                 itemHoder.setData(ticket);
-                MyApplication.log("adapter",listTicket.get(4).getTitle());
+                MyApplication.log("adapter",listTicket.get(4).getName());
                 itemHoder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -89,15 +90,15 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvTagPrice=itemView.findViewById(R.id.tv_price);
         }
 
-        public void setData(GetTicketHighlight ticket) {
-            tvTagPrice.setText(ticket.getPrice());
-            MyApplication.log("GetPriceAdapter",ticket.getPrice());
+        public void setData(GetEventHot ticket) {
+//            tvTagPrice.setText(ticket.getAddress());
+//            MyApplication.log("GetPriceAdapter",ticket.getPrice());
 //            tvTagCity.setText("Ho Chi Minh");
-//            tvDescript.setText("Mo ta");
-            tvTitle.setText(ticket.getTitle());
-
+            tvDescript.setText(ticket.getEvent_local_name());
+            tvTitle.setText(ticket.getName());
+String image="https://ticketgo.vn/"+ticket.getLogo();
             Glide.with(context)
-                    .load(ticket.getImage())
+                    .load(image)
                     .into(imgTicket);
         }
     }
@@ -108,7 +109,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvMessage=itemView.findViewById(R.id.tv_message);
         }
 
-        public List<GetTicketHighlight> getListData() {
+        public List<GetEventHot> getListData() {
             return listTicket;
         }
 
@@ -116,10 +117,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvMessage.setText("Danh sách vé trống");
     }
 }
-    public List<GetTicketHighlight> getListData() {
-        List<GetTicketHighlight> list = new ArrayList<>();
+    public List<GetEventHot> getListData() {
+        List<GetEventHot> list = new ArrayList<>();
 
-        for (GetTicketHighlight ticketList : listTicket) {
+        for (GetEventHot ticketList : listTicket) {
 
             list.add(ticketList);
 

@@ -8,36 +8,25 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.blankj.utilcode.util.Utils;
-import com.example.taipv.MyApplication;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.HomeAdapter;
-import com.example.taipv.ticketgo.model.GetTicket;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
+import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.presenter.HomePre.HomePresenter;
 import com.example.taipv.ticketgo.view.activity.HomeActivity;
-import com.example.taipv.ticketgo.view.activity.inf.BackPressedFragment;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBackPressedListener{
     private static final String TAG = "xxx";
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
-    List<GetTicketHighlight>listT;
+    List<GetEventHot>listT;
 
     public static Home newInstance() {
 
@@ -67,8 +56,8 @@ public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBack
         recyclerView=view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getFragment().getContext()));
-//        List<GetTicketHighlight>list=new ArrayList<>();
-//        GetTicketHighlight ticketHighlight=new GetTicketHighlight();
+//        List<GetEventHot>list=new ArrayList<>();
+//        GetEventHot ticketHighlight=new GetEventHot();
 //        ticketHighlight.setPrice("59999");
 //        ticketHighlight.setImage("https://api.androidhive.info/json/movies/thor_ragnarok.jpg");
 //        ticketHighlight.setTitle("Toi Dep Trai");
@@ -78,12 +67,12 @@ public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBack
     }
 
     @Override
-    public void onGetSuscess(List<GetTicketHighlight> list) {
+    public void onGetSuscess(List<GetEventHot> list) {
         initFragment(list);
         closeProgressBar();
     }
 
-    private void initFragment(List<GetTicketHighlight> list) {
+    private void initFragment(List<GetEventHot> list) {
         homeAdapter=new HomeAdapter(getContext(),list);
         homeAdapter.notifyDataSetChanged();
 

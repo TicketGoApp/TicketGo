@@ -7,17 +7,13 @@ import com.blankj.utilcode.util.Utils;
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.commons.Constants;
 import com.example.taipv.ticketgo.model.GetInfoFB;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
 import com.example.taipv.ticketgo.model.GetTokenFB;
-import com.example.taipv.ticketgo.model.server.HomeModel;
 import com.example.taipv.ticketgo.model.server.InfoFacebook;
 import com.example.taipv.ticketgo.model.server.TokenFacebook;
 import com.example.taipv.ticketgo.presenter.BasicPresenter;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.activity.login.LoginActivity;
 import com.facebook.login.LoginManager;
-
-import java.util.List;
 
 /**
  * Author: Phùng Tài NeverGiveUp
@@ -58,6 +54,7 @@ public class ProfilePre extends BasicPresenter {
 
                             @Override
                             protected void getFB() {
+                                view.showProgressBar(1);
 
                             }
                         };

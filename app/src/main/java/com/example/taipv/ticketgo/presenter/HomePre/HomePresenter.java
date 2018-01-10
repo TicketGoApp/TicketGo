@@ -1,13 +1,11 @@
 package com.example.taipv.ticketgo.presenter.HomePre;
 
 import com.blankj.utilcode.util.NetworkUtils;
-import com.bumptech.glide.Glide;
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.commons.Constants;
-import com.example.taipv.ticketgo.model.GetTicketHighlight;
+import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.model.server.HomeModel;
 import com.example.taipv.ticketgo.presenter.BasicPresenter;
-import com.example.taipv.ticketgo.view.activity.inf.IBasicView;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 
 import java.util.List;
@@ -35,9 +33,9 @@ public class HomePresenter  extends BasicPresenter{
                     }
 
                     @Override
-                    protected void onSuccess(List<GetTicketHighlight> obj) {
+                    protected void onSuccess(List<GetEventHot> obj) {
                         view.onGetSuscess(obj);
-                        MyApplication.log("Lít",obj.get(1).getTitle());
+//                        MyApplication.log("Lít",obj.get(1).getName());
                     }
                 };
         }
