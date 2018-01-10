@@ -30,6 +30,11 @@ public class HomePresenter  extends BasicPresenter{
                 new HomeModel(){
 
                     @Override
+                    protected void getFB() {
+
+                    }
+
+                    @Override
                     protected void onSuccess(List<GetTicketHighlight> obj) {
                         view.onGetSuscess(obj);
                         MyApplication.log("Lít",obj.get(1).getTitle());

@@ -10,13 +10,13 @@ public abstract class AbsICmd implements Icmd {
     @Override
     public void run() {
         try {
+            getFB();
             invoke();
         } catch (Exception e) {
             exception(e.getMessage());
         }
     }
-
+    protected abstract void getFB();
     protected abstract void invoke();
-
     protected abstract void exception(String message);
 }

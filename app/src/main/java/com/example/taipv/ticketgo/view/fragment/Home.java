@@ -1,6 +1,7 @@
 package com.example.taipv.ticketgo.view.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,8 @@ import com.example.taipv.ticketgo.adapter.HomeAdapter;
 import com.example.taipv.ticketgo.model.GetTicket;
 import com.example.taipv.ticketgo.model.GetTicketHighlight;
 import com.example.taipv.ticketgo.presenter.HomePre.HomePresenter;
+import com.example.taipv.ticketgo.view.activity.HomeActivity;
+import com.example.taipv.ticketgo.view.activity.inf.BackPressedFragment;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 
 import java.util.ArrayList;
@@ -29,12 +32,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Home extends BasicFragment implements IHomeView{
+public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBackPressedListener{
     private static final String TAG = "xxx";
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
     List<GetTicketHighlight>listT;
+
     public static Home newInstance() {
 
         Bundle args = new Bundle();
@@ -56,7 +60,7 @@ public class Home extends BasicFragment implements IHomeView{
         homePresenter=new HomePresenter(this);
         initRecyclerview(view);
         homePresenter.getHome();
-
+        ((HomeActivity) getActivity()).setOnBackPressedListener(this);
     }
 
     private void initRecyclerview(View view) {
@@ -115,4 +119,17 @@ public class Home extends BasicFragment implements IHomeView{
     public Fragment getFragment() {
         return this;
     }
+
+
+
+    @Override
+    public void doBack() {
+//MyApplication.toast("say meomeo");
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startActivity(startMain);
+    }
+
+//    public boolean allowBackPressed() {
+//    }
 }

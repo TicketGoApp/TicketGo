@@ -15,9 +15,18 @@ public class ApiFactory {
         return getTicketRetrofit().create(tClass);
     }
 
+    public static <T> T getAPIFB(Class<T>tClass){
+        return getLoginRetrofit().create(tClass);
+    }
     private static Retrofit getTicketRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(Constants.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+    private static Retrofit getLoginRetrofit() {
+        return new Retrofit.Builder()
+                .baseUrl(Constants.URL_TICKET)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

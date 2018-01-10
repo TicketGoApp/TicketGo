@@ -8,6 +8,10 @@ import android.preference.PreferenceManager;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.Utils;
 import com.example.taipv.MyApplication;
+import com.example.taipv.ticketgo.model.GetTokenFB;
+import com.example.taipv.ticketgo.model.server.InfoFacebook;
+import com.example.taipv.ticketgo.model.server.TokenFacebook;
+import com.example.taipv.ticketgo.presenter.BasicPresenter;
 import com.example.taipv.ticketgo.util.PrefUtil;
 import com.example.taipv.ticketgo.view.activity.login.LoginView;
 import com.facebook.login.Login;
@@ -16,17 +20,20 @@ import com.facebook.login.Login;
  * Created by taipv on 12/26/2017.
  */
 
-public class LoginLogicPresenter implements LoginImplPresenter {
-    LoginView loginView;
-    SharedPreferences preferences;
+public class LoginLogicPresenter extends BasicPresenter implements LoginImplPresenter {
+   private LoginView loginView;
+       SharedPreferences preferences;
     SharedPreferences preferen;
-    PrefUtil prefUtil;
+     PrefUtil prefUtil;
 
     public LoginLogicPresenter(LoginView loginView) {
+        super(loginView);
         this.loginView = loginView;
     }
 
-    @Override
+
+
+        @Override
     public void checkLogin(String user, String Password) {
 
         if (!user.equals("admin") || !Password.equals("admin")) {
@@ -47,19 +54,19 @@ public class LoginLogicPresenter implements LoginImplPresenter {
 
     @Override
     public void checkLogined(String name, String pass) {
-         preferences=Utils.getApp().getSharedPreferences("mydata", Context.MODE_PRIVATE);
-        String userGet=preferences.getString("email","");
-        String passGet=preferences.getString("pass","");
-        String token=preferences.getString("tokenFB","");
+        preferences = Utils.getApp().getSharedPreferences("mydata", Context.MODE_PRIVATE);
+        String userGet = preferences.getString("email", "");
+        String passGet = preferences.getString("pass", "");
+        String token = preferences.getString("tokenFB", "");
 
-        MyApplication.log("Sharepre",token);
-        if(preferences!=null){
-            if(userGet.equals("admin")&&passGet.equals("admin")){
+        MyApplication.log("Sharepre", token);
+        if (preferences != null) {
+            if (userGet.equals("admin") && passGet.equals("admin")) {
                 loginView.loginned();
-            }else {
+            } else {
                 return;
             }
-        }else {
+        } else {
             return;
         }
 
@@ -80,15 +87,39 @@ public class LoginLogicPresenter implements LoginImplPresenter {
 //        preferences=Utils.getApp().getSharedPreferences("mydata", Context.MODE_PRIVATE);
 //        String tokenFB=preferences.getString("tokenFB","TOKEN");
 //        MyApplication.log("TOKENFB",tokenFB);
-        prefUtil=new PrefUtil(activity);
+        prefUtil = new PrefUtil(activity);
         String tokenFB = prefUtil.getToken();
-                MyApplication.log("TOKENFB",tokenFB);
+        MyApplication.log("TOKENFB", tokenFB);
 
-        if(token.equals(tokenFB)){
+        if (token.equals(tokenFB)) {
             loginView.loginned();
-        }else {
+        } else {
             loginView.loginFailure();
             return;
         }
+    }
+
+
+
+    public void getTokenWeb(long id, String email, String name, String image){
+        new TokenFacebook(id, email, name, image) {
+            @Override
+            protected void invoke() {
+
+            }
+
+            @Override
+            protected void onSuccess(GetTokenFB getTokenFB) {
+//                String getToken=getTokenFB.getToken()+"123";
+//                MyApplication.log("TOKENFB123", getToken);
+
+            }
+        };
+    }
+
+
+    @Override
+    protected void getSessionSuccess(Object... params) {
+
     }
 }

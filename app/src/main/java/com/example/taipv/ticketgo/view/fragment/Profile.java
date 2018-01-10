@@ -16,9 +16,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.Utils;
+import com.bumptech.glide.Glide;
+import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.ItemClickListener;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.ProfileAdapter;
+import com.example.taipv.ticketgo.model.GetInfoFB;
 import com.example.taipv.ticketgo.model.ProfileModel;
 import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
 import com.example.taipv.ticketgo.util.PrefUtil;
@@ -63,6 +66,10 @@ public class Profile extends BasicFragment implements IProfileView {
         profilePre=new ProfilePre(this);
         initRecyclerView(view);
         profilePre.getLogout();
+        result();
+    }
+
+    private void result() {
     }
 
     private void initRecyclerView(View view) {
@@ -117,15 +124,18 @@ for(int i=0;i<title.length;i++){
 
     }
 
+
     @Override
-    public void showProgressBar() {
+    public void passData(long id, String email, String name, String image) {
 
     }
 
     @Override
-    public void onGetSuscess() {
+    public void onGetSuscess(GetInfoFB object) {
+        MyApplication.log("image",object.getImage());
 
     }
+
 
     @Override
     public void onLogoutSuccess(boolean isSuccess) {

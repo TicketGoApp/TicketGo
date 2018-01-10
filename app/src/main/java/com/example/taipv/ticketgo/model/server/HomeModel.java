@@ -2,7 +2,6 @@ package com.example.taipv.ticketgo.model.server;
 
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.AbsICmd;
-import com.example.taipv.ticketgo.model.GetListTicket;
 import com.example.taipv.ticketgo.model.GetTicketHighlight;
 import com.example.taipv.ticketgo.network.ApiFactory;
 import com.example.taipv.ticketgo.network.IGetTicketHighlight;
@@ -20,7 +19,7 @@ import retrofit2.Response;
  */
 
 public abstract class HomeModel extends AbsICmd {
-    public HomeModel() {
+     public HomeModel() {
         run();
     }
 

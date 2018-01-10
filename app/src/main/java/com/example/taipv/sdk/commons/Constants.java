@@ -6,10 +6,11 @@ package com.example.taipv.sdk.commons;
 
 public class Constants {
     public static final String SESSION = "session";
-    public static final String QRCODE="code";
-    public static final String URL="https://api.androidhive.info/";
-    public static final int ERROR_SESSION = 2 ;
+    public static final String QRCODE = "code";
+    public static final String URL = "https://api.androidhive.info/";
+    public static final int ERROR_SESSION = 2;
     public static final String SHARED_NAME = "mydata";
+    public static final String URL_TICKET = "https://ticketgo.vn/";
     /*
      * Error Code
      * */
