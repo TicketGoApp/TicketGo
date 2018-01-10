@@ -134,6 +134,7 @@ for(int i=0;i<title.length;i++){
     public void onGetSuscess(GetInfoFB object) {
         MyApplication.log("image",object.getImage());
 
+
     }
 
 
