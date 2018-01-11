@@ -1,5 +1,6 @@
 package com.example.taipv.ticketgo.view.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.example.taipv.MyApplication;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.GetInfoFB;
 import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
+import com.example.taipv.ticketgo.util.PermissionHelper;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.fragment.Home;
 import com.example.taipv.ticketgo.view.fragment.MyOder;
@@ -24,6 +26,7 @@ import com.example.taipv.ticketgo.view.fragment.Profile;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,IProfileView {
     BottomNavigationView botnavi;
+
     private ActionBar toolbar;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     private final static String TAG_FRAGMENT2 = "TAG_FRAGMENT2";
@@ -33,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         toolbar = getSupportActionBar();
         profile=new ProfilePre(this);

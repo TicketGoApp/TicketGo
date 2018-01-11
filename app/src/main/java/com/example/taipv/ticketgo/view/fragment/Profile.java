@@ -3,6 +3,7 @@ package com.example.taipv.ticketgo.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.taipv.ticketgo.adapter.ProfileAdapter;
 import com.example.taipv.ticketgo.model.GetInfoFB;
 import com.example.taipv.ticketgo.model.ProfileModel;
 import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
+import com.example.taipv.ticketgo.util.DownloadTask;
 import com.example.taipv.ticketgo.util.PrefUtil;
 import com.example.taipv.ticketgo.util.SharedUtils;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
@@ -41,15 +43,15 @@ public class Profile extends BasicFragment implements IProfileView {
     ProfileModel profileModel;
     ProfilePre profilePre;
     ImageView imgAvatar, imgCover;
-    TextView tvUserName,tvEmail;
+    TextView tvUserName, tvEmail;
     List<ProfileModel> listProfile;
     String name;
     String email;
     String image;
     Integer[] icon = {R.drawable.history, R.drawable.adduser, R.drawable.share, R.drawable.mail, R.drawable.star, R.drawable.setup, R.drawable.info, R.drawable.phone, R.drawable.exit};
     String[] title = {"Lịch sử", "Mời bạn bè", "Chia sẻ", "Góp ý", "Đánh giá app TicketGo", "Cài đặt", "Giới thiệu", "Liên hệ ngay", "Đăng xuất"};
-    SharedUtils sharedUtils;
-    public static Profile newInstance(long id,String email,String name,String image) {
+
+    public static Profile newInstance(long id, String email, String name, String image) {
 
         Bundle args = new Bundle();
         args.putLong("id", id);
@@ -66,22 +68,23 @@ public class Profile extends BasicFragment implements IProfileView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle=this.getArguments();
+        Bundle bundle = this.getArguments();
         if (getArguments() != null) {
             long id = bundle.getLong("id");
-             email = getArguments().getString("email");
-             name = getArguments().getString("name");
-             image = getArguments().getString("image");
+            email = getArguments().getString("email");
+            name = getArguments().getString("name");
+            image = getArguments().getString("image");
             Log.d("getArguments", "result: " + id);
         } else {
             Log.d("getArguments oncreate", "null ");
         }
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        Bundle bundle=this.getArguments();
+        Bundle bundle = this.getArguments();
 //        if (getArguments() != null) {
 //            long id = bundle.getLong("id");
 //            String email = getArguments().getString("email");
@@ -102,19 +105,42 @@ public class Profile extends BasicFragment implements IProfileView {
         profilePre = new ProfilePre(this);
         initRecyclerView(view);
         profilePre.getLogout();
-    tvUserName=view.findViewById(R.id.tv_username);
-    tvEmail=view.findViewById(R.id.tv_email);
-    imgAvatar=view.findViewById(R.id.img_avatar);
+        initProfile(view);
 
-    if(name!=null&&!name.equals("")){
-        tvUserName.setText(name);
-        tvEmail.setText(email);
-        Glide.with(getFragment()).load(image).into(imgAvatar);
 
-    }else {
-        tvUserName.setText("Nuller");
-    }
         result();
+    }
+
+    private void initProfile(View view) {
+        tvUserName = view.findViewById(R.id.tv_username);
+        tvEmail = view.findViewById(R.id.tv_email);
+        imgAvatar = view.findViewById(R.id.img_avatar);
+        if(SharedUtils.getInstance().getStringValue("name")==null||SharedUtils.getInstance().getStringValue("name").equals("")){
+            if (name != null && !name.equals("")) {
+                tvUserName.setText(name);
+                tvEmail.setText(email);
+                Glide.with(getFragment()).load(image).into(imgAvatar);
+                DownloadTask downloadTask=new DownloadTask(getActivity());
+                downloadTask.execute(image);
+                SharedUtils.getInstance().putStringValue("name", name);
+                SharedUtils.getInstance().putStringValue("email", email);
+                SharedUtils.getInstance().putStringValue("image", image);
+                Log.d("put",SharedUtils.getInstance().getStringValue("email"));
+                if(SharedUtils.getInstance().getStringValue("pathImage")==null){
+                    MyApplication.log("pathImage","null");
+                }else {
+                    String x=SharedUtils.getInstance().getStringValue("pathImage");
+                    MyApplication.log("pathImage","OK");
+                }
+            } else {
+                tvUserName.setText("Nuller");
+                tvEmail.setText("Nuller");
+            }
+        }else {
+            Log.d("put",""+SharedUtils.getInstance().getStringValue("email"));
+
+        }
+
     }
 
     private void result() {
@@ -162,17 +188,33 @@ public class Profile extends BasicFragment implements IProfileView {
     public void onResume() {
         super.onResume();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        if (SharedUtils.getInstance().getStringValue("name") == null || SharedUtils.getInstance().getStringValue("name").equals("")) {
+//            tvUserName.setText(name);
+//            tvEmail.setText(email);
+//            Glide.with(getFragment()).load(image).into(imgAvatar);
+//            MyApplication.log("share","null");
+        }else {
+            tvUserName.setText(SharedUtils.getInstance().getStringValue("name"));
+            if(SharedUtils.getInstance().getStringValue("email")==null){
+                Log.d("email profile","null");
+            }
+            tvEmail.setText(SharedUtils.getInstance().getStringValue("email"));
+            String path=SharedUtils.getInstance().getStringValue("pathImage");
+            imgAvatar.setImageDrawable(Drawable.createFromPath(path));
 
+            MyApplication.log("share",SharedUtils.getInstance().getStringValue("name")+SharedUtils.getInstance().getStringValue("email")+SharedUtils.getInstance().getStringValue("pathImage"));
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-//
-//        sharedUtils.putStringValue("email",email);
-//        sharedUtils.putStringValue("name",name);
-//        sharedUtils.putStringValue("image",image);
+        if (name != null & email != null & image != null) {
+
+            Log.d("profile", "onPause:email "+email);
+        }
+
     }
 
 
@@ -209,7 +251,7 @@ public class Profile extends BasicFragment implements IProfileView {
                 message = getString(R.string.doing_do);
                 break;
         }
-        showProgressBar(false, false, message);
+//        showProgressBar(false, false, message);
     }
 
     @Override
