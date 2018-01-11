@@ -119,13 +119,14 @@ public class Profile extends BasicFragment implements IProfileView {
             if (name != null && !name.equals("")) {
                 tvUserName.setText(name);
                 tvEmail.setText(email);
+                Log.d("email", "initProfile: "+email);
                 Glide.with(getFragment()).load(image).into(imgAvatar);
                 DownloadTask downloadTask=new DownloadTask(getActivity());
                 downloadTask.execute(image);
                 SharedUtils.getInstance().putStringValue("name", name);
-                SharedUtils.getInstance().putStringValue("email", email);
+                SharedUtils.getInstance().putStringValue("emailFB", email);
                 SharedUtils.getInstance().putStringValue("image", image);
-                Log.d("put",SharedUtils.getInstance().getStringValue("email"));
+//                Log.d("put",SharedUtils.getInstance().getStringValue("email"));
                 if(SharedUtils.getInstance().getStringValue("pathImage")==null){
                     MyApplication.log("pathImage","null");
                 }else {
@@ -195,10 +196,10 @@ public class Profile extends BasicFragment implements IProfileView {
 //            MyApplication.log("share","null");
         }else {
             tvUserName.setText(SharedUtils.getInstance().getStringValue("name"));
-            if(SharedUtils.getInstance().getStringValue("email")==null){
+            if(SharedUtils.getInstance().getStringValue("emailFB")==null){
                 Log.d("email profile","null");
             }
-            tvEmail.setText(SharedUtils.getInstance().getStringValue("email"));
+            tvEmail.setText(SharedUtils.getInstance().getStringValue("emailFB"));
             String path=SharedUtils.getInstance().getStringValue("pathImage");
             imgAvatar.setImageDrawable(Drawable.createFromPath(path));
 
