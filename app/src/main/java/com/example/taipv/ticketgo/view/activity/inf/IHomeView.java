@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface IHomeView extends IBasicView{
     void onGetSuscess(List<GetEventHot> list);
+    void onGetSuccessAll(List<GetEventHot>list);
     void onLogoutSuccess(boolean isSuccess);
     void showProgressBar(int type);
     Fragment getFragment();

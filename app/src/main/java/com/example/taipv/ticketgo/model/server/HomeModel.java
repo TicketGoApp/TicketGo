@@ -35,6 +35,7 @@ public abstract class HomeModel extends AbsICmd {
             public void onResponse(Call<GetEvent> call, Response<GetEvent> response) {
                 if(response.isSuccessful()){
                     HomeModel.this.onSuccess(response.body().getEventHot());
+                    HomeModel.this.onSuccessAll(response.body().getAllEvent());
 //                    Log.d("GetEvent", "onResponse: "+response.body().getEventHot().get(0).getName());
                 }else {
                     MyApplication.log("GetEvent","null");
@@ -53,5 +54,7 @@ public abstract class HomeModel extends AbsICmd {
 
     }
     protected abstract void onSuccess(List<GetEventHot> list);
+    protected abstract void onSuccessAll(List<GetEventHot> list);
+
 
 }

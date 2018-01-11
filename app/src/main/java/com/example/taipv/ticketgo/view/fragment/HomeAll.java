@@ -1,13 +1,10 @@
 package com.example.taipv.ticketgo.view.fragment;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.HomeAdapter;
-import com.example.taipv.ticketgo.model.Fragments;
 import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.presenter.HomePre.HomePresenter;
 import com.example.taipv.ticketgo.view.activity.HomeActivity;
@@ -24,17 +20,23 @@ import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 
 import java.util.List;
 
-public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
+/**
+ * Author: Phùng Tài NeverGiveUp
+ * Date: 1/11/2018
+ * Email: tai97nd@gmail.com
+ */
+
+public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
     private static final String TAG = "xxx";
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
 
-    public static Home newInstance(String titlePager) {
+    public static HomeAll newInstance(String titlePager) {
 
         Bundle args = new Bundle();
         args.putString("titlePager", titlePager);
-        Home fragment = new Home();
+        HomeAll fragment = new HomeAll();
         fragment.setArguments(args);
         return fragment;
     }
@@ -74,12 +76,12 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
 
     @Override
     public void onGetSuscess(List<GetEventHot> list) {
-        initFragment(list);
-        closeProgressBar();
     }
 
     @Override
     public void onGetSuccessAll(List<GetEventHot> list) {
+        initFragment(list);
+        closeProgressBar();
     }
 
     private void initFragment(List<GetEventHot> list) {
@@ -131,3 +133,4 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
 //    public boolean allowBackPressed() {
 //    }
 }
+

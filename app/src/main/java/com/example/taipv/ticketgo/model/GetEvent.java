@@ -15,12 +15,9 @@ public class GetEvent {
     @SerializedName("events_hot")
     List<GetEventHot> eventHot;
     @SerializedName("events")
-    List<GetAllEvent> allEvent;
+    List<GetEventHot> allEvent;
 
-    public GetEvent() {
-    }
-
-    public GetEvent(List<GetEventHot> eventHot, List<GetAllEvent> allEvent) {
+    public GetEvent(List<GetEventHot> eventHot, List<GetEventHot> allEvent) {
         this.eventHot = eventHot;
         this.allEvent = allEvent;
     }
@@ -33,11 +30,11 @@ public class GetEvent {
         this.eventHot = eventHot;
     }
 
-    public List<GetAllEvent> getAllEvent() {
+    public List<GetEventHot> getAllEvent() {
         return allEvent;
     }
 
-    public void setAllEvent(List<GetAllEvent> allEvent) {
+    public void setAllEvent(List<GetEventHot> allEvent) {
         this.allEvent = allEvent;
     }
 }

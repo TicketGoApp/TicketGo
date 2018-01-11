@@ -46,7 +46,7 @@ public class HomeMain extends BasicFragment {
         viewPager = view.findViewById(R.id.pager);
         list = new ArrayList<>();
         list.add(new Fragments(Home.newInstance("events_hot"), "Event Hot"));
-        list.add(new Fragments(Home.newInstance("events"), "All Event"));
+        list.add(new Fragments(HomeAll.newInstance("events"), "All Event"));
         adapter = new ViewpagerAdapter(getChildFragmentManager(), list);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

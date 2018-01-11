@@ -22,7 +22,7 @@ public class HomePresenter  extends BasicPresenter{
         super(view);
         this.view=view;
     }
-    private void iCmd(Object...objects){
+    private void iCmd(final Object...objects){
         switch ((int)objects[0]){
             case 1:
                 new HomeModel(){
@@ -36,6 +36,11 @@ public class HomePresenter  extends BasicPresenter{
                     protected void onSuccess(List<GetEventHot> obj) {
                         view.onGetSuscess(obj);
 //                        MyApplication.log("Lít",obj.get(1).getName());
+                    }
+
+                    @Override
+                    protected void onSuccessAll(List<GetEventHot> list) {
+                        view.onGetSuccessAll(list);
                     }
                 };
         }
