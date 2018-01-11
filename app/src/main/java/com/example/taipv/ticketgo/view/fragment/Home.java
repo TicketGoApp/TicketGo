@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.HomeAdapter;
+import com.example.taipv.ticketgo.model.Fragments;
 import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.presenter.HomePre.HomePresenter;
 import com.example.taipv.ticketgo.view.activity.HomeActivity;
@@ -26,12 +29,11 @@ public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBack
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
-    List<GetEventHot>listT;
 
-    public static Home newInstance() {
+    public static Home newInstance(String titlePager) {
 
         Bundle args = new Bundle();
-        
+        args.putString("titlePager",titlePager);
         Home fragment = new Home();
         fragment.setArguments(args);
         return fragment;
@@ -40,7 +42,17 @@ public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBack
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
+        init();
         return view;
+    }
+
+    private void init() {
+        String event="";
+        try {
+            event=getArguments().getString("titlePager");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -52,18 +64,12 @@ public class Home extends BasicFragment implements IHomeView,HomeActivity.OnBack
         ((HomeActivity) getActivity()).setOnBackPressedListener(this);
     }
 
+
+
     private void initRecyclerview(View view) {
         recyclerView=view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getFragment().getContext()));
-//        List<GetEventHot>list=new ArrayList<>();
-//        GetEventHot ticketHighlight=new GetEventHot();
-//        ticketHighlight.setPrice("59999");
-//        ticketHighlight.setImage("https://api.androidhive.info/json/movies/thor_ragnarok.jpg");
-//        ticketHighlight.setTitle("Toi Dep Trai");
-//        list.add(ticketHighlight);
-//        homeAdapter=new HomeAdapter(getContext(),list);
-//        recyclerView.setAdapter(homeAdapter);
     }
 
     @Override

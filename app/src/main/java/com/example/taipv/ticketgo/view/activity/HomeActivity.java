@@ -20,6 +20,7 @@ import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
 import com.example.taipv.ticketgo.util.PermissionHelper;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.fragment.Home;
+import com.example.taipv.ticketgo.view.fragment.HomeMain;
 import com.example.taipv.ticketgo.view.fragment.MyOder;
 import com.example.taipv.ticketgo.view.fragment.News;
 import com.example.taipv.ticketgo.view.fragment.Profile;
@@ -44,7 +45,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         botnavi.setOnNavigationItemSelectedListener(this);
 
         toolbar.setTitle("Shop");
-        loadFragment(new Home(), TAG_FRAGMENT);
+        loadFragment(new HomeMain(), TAG_FRAGMENT);
 
     }
 
@@ -74,7 +75,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.navigation_shop:
                 toolbar.setTitle("Home");
-                fragment = new Home();
+                fragment = new HomeMain();
                 loadFragment(fragment, TAG_FRAGMENT);
                 return true;
             case R.id.navigation_gifts:
