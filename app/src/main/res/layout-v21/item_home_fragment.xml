@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_decription"
                 android:layout_marginRight="10dp"
-                android:text="@string/ho_chi_minh"
+                android:text="@string/ha_noi"
                 android:paddingBottom="@dimen/dp5"
                 android:paddingLeft="@dimen/dp10"
                 android:textColor="@color/viewBg"
