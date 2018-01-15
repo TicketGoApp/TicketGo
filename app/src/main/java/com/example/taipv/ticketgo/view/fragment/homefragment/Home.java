@@ -1,4 +1,5 @@
-package com.example.taipv.ticketgo.view.fragment;
+package com.example.taipv.ticketgo.view.fragment.homefragment;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,26 +18,21 @@ import com.example.taipv.ticketgo.model.GetEventHot;
 import com.example.taipv.ticketgo.presenter.HomePre.HomePresenter;
 import com.example.taipv.ticketgo.view.activity.HomeActivity;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
+import com.example.taipv.ticketgo.view.fragment.BasicFragment;
 
 import java.util.List;
 
-/**
- * Author: Phùng Tài NeverGiveUp
- * Date: 1/11/2018
- * Email: tai97nd@gmail.com
- */
-
-public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
+public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
     private static final String TAG = "xxx";
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
 
-    public static HomeAll newInstance(String titlePager) {
+    public static Home newInstance(String titlePager) {
 
         Bundle args = new Bundle();
         args.putString("titlePager", titlePager);
-        HomeAll fragment = new HomeAll();
+        Home fragment = new Home();
         fragment.setArguments(args);
         return fragment;
     }
@@ -76,12 +72,12 @@ public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.On
 
     @Override
     public void onGetSuscess(List<GetEventHot> list) {
+        initFragment(list);
+        closeProgressBar();
     }
 
     @Override
     public void onGetSuccessAll(List<GetEventHot> list) {
-        initFragment(list);
-        closeProgressBar();
     }
 
     private void initFragment(List<GetEventHot> list) {
@@ -133,4 +129,3 @@ public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.On
 //    public boolean allowBackPressed() {
 //    }
 }
-

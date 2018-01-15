@@ -94,7 +94,6 @@ public class BaseActivity extends AppCompatActivity implements IBasicView {
         prefUtil.clearToken();
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
         finish();
         startActivity(intent);
     }

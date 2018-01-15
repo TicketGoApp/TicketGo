@@ -54,7 +54,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     MyApplication.toast(position+"");
                 }
             });
-
         }
     }
     @Override

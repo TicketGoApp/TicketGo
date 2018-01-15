@@ -1,8 +1,6 @@
 package com.example.taipv.ticketgo.view.activity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,21 +9,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.taipv.MyApplication;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.GetInfoFB;
 import com.example.taipv.ticketgo.presenter.profilepre.ProfilePre;
-import com.example.taipv.ticketgo.util.PermissionHelper;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
-import com.example.taipv.ticketgo.view.fragment.Home;
-import com.example.taipv.ticketgo.view.fragment.HomeMain;
+import com.example.taipv.ticketgo.view.fragment.homefragment.HomeMain;
 import com.example.taipv.ticketgo.view.fragment.MyOder;
 import com.example.taipv.ticketgo.view.fragment.News;
 import com.example.taipv.ticketgo.view.fragment.Profile;
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,IProfileView {
+public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener,IProfileView {
     BottomNavigationView botnavi;
 
     private ActionBar toolbar;
@@ -56,7 +50,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         String email=intent.getStringExtra("email");
         String image=intent.getStringExtra("image");
         profile.getToken(id, email, name, image);
-
 
     }
 
@@ -150,7 +143,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 //
 //        }
     }
-
     @Override
     public void onError(int code) {
 
@@ -175,6 +167,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public void onGetSuscess(GetInfoFB object) {
         Fragment fragment=Profile.newInstance(object.getFacebook_id(),object.getEmail(),object.getName(),object.getImage());
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,fragment).commit();
+    }
+
+    @Override
+    protected void showConfirmExitApp() {
+        super.showConfirmExitApp();
     }
 
     @Override

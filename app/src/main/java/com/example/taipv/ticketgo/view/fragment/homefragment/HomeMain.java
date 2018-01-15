@@ -1,4 +1,4 @@
-package com.example.taipv.ticketgo.view.fragment;
+package com.example.taipv.ticketgo.view.fragment.homefragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.ViewpagerAdapter;
 import com.example.taipv.ticketgo.model.Fragments;
+import com.example.taipv.ticketgo.view.fragment.BasicFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Author: Phùng Tài NeverGiveUp

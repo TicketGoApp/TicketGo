@@ -1,40 +1,31 @@
 package com.example.taipv.ticketgo.model;
 
-import com.example.taipv.ticketgo.model.server.GetAllEvent;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 /**
  * Author: Phùng Tài NeverGiveUp
- * Date: 1/10/2018
+ * Date: 1/15/2018
  * Email: tai97nd@gmail.com
  */
 
 public class GetEvent {
-    @SerializedName("events_hot")
-    List<GetEventHot> eventHot;
     @SerializedName("events")
-    List<GetEventHot> allEvent;
-
-    public GetEvent(List<GetEventHot> eventHot, List<GetEventHot> allEvent) {
-        this.eventHot = eventHot;
-        this.allEvent = allEvent;
+    private GetEvents getEvents;
+    @SerializedName("events_hot")
+    private GetEvents getEventsHot;
+    public GetEvents getGetEvents() {
+        return getEvents;
     }
 
-    public List<GetEventHot> getEventHot() {
-        return eventHot;
+    public void setGetEvents(GetEvents getEvents) {
+        this.getEvents = getEvents;
     }
 
-    public void setEventHot(List<GetEventHot> eventHot) {
-        this.eventHot = eventHot;
+    public GetEvents getGetEventsHot() {
+        return getEventsHot;
     }
 
-    public List<GetEventHot> getAllEvent() {
-        return allEvent;
-    }
-
-    public void setAllEvent(List<GetEventHot> allEvent) {
-        this.allEvent = allEvent;
+    public void setGetEventsHot(GetEvents getEventsHot) {
+        this.getEventsHot = getEventsHot;
     }
 }

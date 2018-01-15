@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<FrameLayout
+    android:id="@+id/frame_container_pay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/lyt_book">
+    ></FrameLayout>
+    <RelativeLayout
+        android:id="@+id/lyt_book"
+        android:background="@color/black_75"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80">
+
+        <Button
+            android:id="@+id/btnPay"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/button_pay"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="@dimen/dp60"
+            android:text="@string/pay"
+            android:textColor="@color/white_100"
+            />
+    </RelativeLayout>
+</RelativeLayout>
