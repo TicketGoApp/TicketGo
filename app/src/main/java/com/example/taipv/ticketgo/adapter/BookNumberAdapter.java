@@ -29,6 +29,7 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private List<TicketName> listTicket;
     private int positi = -1;
+    int totalMoney=-1;
 //    private TicketName ticketName;
 
     public BookNumberAdapter(Context context, List<TicketName> listTicket, int position) {
@@ -80,6 +81,8 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     count[0]++;
                     tvNumberTicket.setText(String.valueOf(count[0]));
                     btnReduce.setBackgroundColor(Color.TRANSPARENT);
+    iPassPos.passPos(count[0]);
+
                 }
             });
             btnReduce.setBackgroundColor(Color.GRAY);
@@ -102,7 +105,7 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         public void setData(TicketName ticketName) {
             tvTypeTicket.setText(ticketName.getPrice() + "");
             int money=ticketName.getPrice()*Integer.parseInt(tvNumberTicket.getText().toString());
-            iPassPos.passPos(money);
+
             MyApplication.log("money",tvNumberTicket.getText().toString());
 //                MyApplication.log("getSoLuong",getEventHot.getTickets_name().get(0).getPrice()+"123");
 
