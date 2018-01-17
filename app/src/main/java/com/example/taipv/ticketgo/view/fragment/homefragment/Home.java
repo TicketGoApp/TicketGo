@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.taipv.MyApplication;
+import com.example.taipv.sdk.callbacks.ItemClickListener;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.HomeAdapter;
 import com.example.taipv.ticketgo.model.GetEventHot;
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
     private static final String TAG = "xxx";
+
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
@@ -36,6 +39,7 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Nullable
     @Override
@@ -85,6 +89,12 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
         homeAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(homeAdapter);
+        homeAdapter.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(int position, Object object) {
+                MyApplication.log("say ok",position+"");
+            }
+        });
     }
 
     @Override

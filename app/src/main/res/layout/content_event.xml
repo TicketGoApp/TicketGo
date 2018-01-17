@@ -7,7 +7,6 @@
         android:id="@+id/img_logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp200"
-        android:src="@drawable/contentavatar"
         android:scaleType="fitXY"
         />
     <TextView
@@ -168,6 +167,7 @@
             android:orientation="horizontal"
             >
             <ImageView
+                android:id="@+id/img_origined"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="@dimen/dp100"
                 android:src="@drawable/contentavatar"
@@ -175,6 +175,7 @@
                 android:layout_gravity="center_horizontal"
                 />
             <TextView
+                android:id="@+id/tv_origined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="R.M.P ( Rap music party) là một show diễn thường niên với cái chất đường phố, một chút bụi bặm xuồng xã nhưng cũng không kém phần thi vị..."

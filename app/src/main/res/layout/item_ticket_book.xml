@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp20"
+    android:paddingRight="@dimen/dp20"
+    android:paddingTop="@dimen/dp15">
+
+    <TextView
+        android:id="@+id/tv_type_ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100.000 VND"
+        android:textColor="@color/black_100" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:background="@drawable/border_button"
+
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/btn_reduced"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/linearLayout"
+            android:background="@drawable/border_button"
+
+            android:text="-" />
+        <TextView
+            android:id="@+id/tv_number_ticket"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp40"
+            android:text="0"
+            android:layout_gravity="center"
+            android:background="@drawable/border_button"
+            android:gravity="center"
+            />
+        <Button
+            android:background="@drawable/border_button"
+            android:id="@+id/btn_increase"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+
+            android:text="+"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="4px"
+        android:layout_below="@id/linearLayout"
+        android:background="@drawable/dot"
+        android:layout_marginTop="@dimen/dp20"
+        />
+
+
+</RelativeLayout>

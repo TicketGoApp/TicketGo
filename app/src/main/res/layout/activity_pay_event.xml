@@ -3,12 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<FrameLayout
-    android:id="@+id/frame_container_pay"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@id/lyt_book">
-    ></FrameLayout>
     <RelativeLayout
         android:id="@+id/lyt_book"
         android:background="@color/black_75"
@@ -27,5 +21,28 @@
             android:text="@string/pay"
             android:textColor="@color/white_100"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_total_money"
+            android:layout_alignBaseline="@+id/btnPay"
+            android:layout_alignBottom="@+id/btnPay"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Tổng: 100.000 VND"
+            android:textColor="@color/white" />
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_container_pay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/lyt_book"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        >
+    </FrameLayout>
 </RelativeLayout>
