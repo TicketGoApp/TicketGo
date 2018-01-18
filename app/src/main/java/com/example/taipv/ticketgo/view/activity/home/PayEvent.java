@@ -11,14 +11,10 @@ import android.widget.TextView;
 
 import com.example.taipv.MyApplication;
 import com.example.taipv.ticketgo.R;
-import com.example.taipv.ticketgo.adapter.BookNumberAdapter;
-import com.example.taipv.ticketgo.model.GetEventHot;
+import com.example.taipv.ticketgo.util.FormatUtils;
 import com.example.taipv.ticketgo.view.activity.BaseActivity;
-import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 import com.example.taipv.ticketgo.view.fragment.homefragment.pay.BookNumberTicket;
 import com.example.taipv.ticketgo.view.fragment.homefragment.pay.ProceedPay;
-
-import java.util.List;
 
 /**
  * Author: Phùng Tài NeverGiveUp
@@ -31,6 +27,7 @@ public class PayEvent extends BaseActivity {
     Button btnPay;
     TextView tvTotalMoney;
     private int checkButton=-1;
+    private int money=0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +39,12 @@ public class PayEvent extends BaseActivity {
         init();
         initFragment(BookNumberTicket.newInstance(position));
         nextFragment();
-
     }
 
     public void getTotalMoney(int total) {
-        tvTotalMoney.setText("Tổng: "+String.valueOf(total)+" VND");
+        tvTotalMoney.setText("Tổng: "+ FormatUtils.getInstance().getFormatMoney(total)+" VND");
         tvTotalMoney.setVisibility(View.VISIBLE);
+
     }
 
     private void init() {
@@ -64,10 +61,15 @@ public class PayEvent extends BaseActivity {
             btnPay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                if(!tvTotalMoney.getText().equals("0")){
                     loadFragment(new ProceedPay());
                     if(checkButton==2){
                         btnPay.setText("Xong rồi");
                     }
+                }else {
+                    MyApplication.toast("Bạn vui lòng chọn vé trước khi đặt");
+                }
+
                 }
             });
         }

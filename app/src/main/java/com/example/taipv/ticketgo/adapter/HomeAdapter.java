@@ -98,6 +98,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                     DecimalFormat format = new DecimalFormat("###,###,###");
                     if(ticket.getTickets_name().get(0).getPrice()==0){
+
                         intent.putExtra("price","Miễn phí");
                     }else {
                         intent.putExtra("price",String.valueOf("Từ " + format.format(ticket.getTickets_name().get(0).getPrice()) + " VNĐ"));

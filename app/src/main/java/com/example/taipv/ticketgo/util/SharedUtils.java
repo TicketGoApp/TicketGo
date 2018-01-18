@@ -55,6 +55,7 @@ public class SharedUtils {
         editor.commit();
     }
 
+
     public int getIntValue(String name) {
         return sharedPreferences.getInt(name, -1);
     }

@@ -82,15 +82,15 @@ public class BookNumberTicket extends BasicFragment implements IHomeView,IPassPo
 
     @Override
     public void onGetSuscess(List<GetEventHot> list) {
-
+        adapter=new BookNumberAdapter(getContext(),list.get(posi).getTickets_name(),posi);
+//        MyApplication.log("so luong",list.get(0).getTickets_name().get(0).getPrice()+"price");
+        recyclerView.setAdapter(adapter);
+        adapter.setiPassPos(this);
     }
 
     @Override
     public void onGetSuccessAll(List<GetEventHot> list) {
-        adapter=new BookNumberAdapter(getContext(),list.get(posi).getTickets_name(),posi);
-        MyApplication.log("so luong",list.get(0).getTickets_name().get(0).getPrice()+"price");
-        recyclerView.setAdapter(adapter);
-        adapter.setiPassPos(this);
+
     }
 
     @Override

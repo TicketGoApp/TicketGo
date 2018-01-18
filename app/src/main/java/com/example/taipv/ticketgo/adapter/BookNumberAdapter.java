@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.IPassPos;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.TicketName;
-import com.example.taipv.ticketgo.view.activity.home.PayEvent;
+import com.example.taipv.ticketgo.util.FormatUtils;
+import com.example.taipv.ticketgo.util.SharedUtils;
 
 import java.util.List;
 
@@ -29,7 +29,10 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private List<TicketName> listTicket;
     private int positi = -1;
-    int totalMoney=-1;
+    int totalMoney = -1;
+    int totalReduce=-1;
+    int a;
+    int totalIncrease=0;
 //    private TicketName ticketName;
 
     public BookNumberAdapter(Context context, List<TicketName> listTicket, int position) {
@@ -48,12 +51,14 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ItemHoder itemHoder = (ItemHoder) holder;
         TicketName ticketName = listTicket.get(position);
-
+        SharedUtils.getInstance().putIntValue("Tong",totalMoney);
         itemHoder.setData(ticketName);
     }
-    public void setiPassPos(IPassPos iPassPos){
-        this.iPassPos=iPassPos;
+
+    public void setiPassPos(IPassPos iPassPos) {
+        this.iPassPos = iPassPos;
     }
+
     @Override
     public int getItemCount() {
         return listTicket.size() > 0 ? listTicket.size() : 1;
@@ -69,11 +74,10 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             tvTypeTicket = itemView.findViewById(R.id.tv_type_ticket);
             btnIncrease = itemView.findViewById(R.id.btn_increase);
             btnReduce = itemView.findViewById(R.id.btn_reduced);
-            event();
         }
 
-        private void event() {
-            final int[] count = {0};
+        private void event(final TicketName ticketName) {
+            final int[] count = {0,0};
 
             btnIncrease.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,7 +85,13 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     count[0]++;
                     tvNumberTicket.setText(String.valueOf(count[0]));
                     btnReduce.setBackgroundColor(Color.TRANSPARENT);
-    iPassPos.passPos(count[0]);
+                    totalIncrease+=Integer.parseInt(tvNumberTicket.getText().toString());
+//                    MyApplication.log("money", count[0]+"");
+                    totalMoney=count[0];
+                    a=(SharedUtils.getInstance().getIntValue("Tong"))+(count[0]-(count[0]-1))*ticketName.getPrice();
+                    SharedUtils.getInstance().putIntValue("Tong",a);
+                    MyApplication.log("logTOng",SharedUtils.getInstance().getIntValue("Tong")+1+"");
+                    iPassPos.passPos((SharedUtils.getInstance().getIntValue("Tong")+1));
 
                 }
             });
@@ -89,13 +99,13 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             btnReduce.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(count[0] >0){
+                    if (count[0] > 0) {
                         count[0]--;
                         btnReduce.setBackgroundColor(Color.TRANSPARENT);
                         tvNumberTicket.setText(String.valueOf(count[0]));
-                        if(count[0] ==0){
+                        if (count[0] == 0) {
                             btnReduce.setBackgroundColor(Color.GRAY);
-                            count[0] =0;
+                            count[0] = 0;
                         }
                     }
                 }
@@ -103,12 +113,17 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void setData(TicketName ticketName) {
-            tvTypeTicket.setText(ticketName.getPrice() + "");
-            int money=ticketName.getPrice()*Integer.parseInt(tvNumberTicket.getText().toString());
+            if (ticketName.getPrice()!=0){
+                tvTypeTicket.setText(FormatUtils.getInstance().getFormatMoney(ticketName.getPrice()) +" VND");
 
-            MyApplication.log("money",tvNumberTicket.getText().toString());
+            }else {
+                tvTypeTicket.setText("Miễn phí");
+
+            }
+            int money = ticketName.getPrice() * Integer.parseInt(tvNumberTicket.getText().toString());
+
 //                MyApplication.log("getSoLuong",getEventHot.getTickets_name().get(0).getPrice()+"123");
-
+            event(ticketName);
         }
     }
 }
