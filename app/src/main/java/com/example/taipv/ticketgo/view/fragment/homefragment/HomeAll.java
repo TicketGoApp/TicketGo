@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.taipv.sdk.callbacks.ItemClickListener;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.HomeAdapter;
 import com.example.taipv.ticketgo.model.GetEventHot;
@@ -90,6 +91,12 @@ public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.On
         homeAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(homeAdapter);
+        homeAdapter.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(int position, Object object) {
+
+            }
+        });
     }
 
     @Override
@@ -130,6 +137,7 @@ public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.On
         startMain.addCategory(Intent.CATEGORY_HOME);
         startActivity(startMain);
     }
+
 
 //    public boolean allowBackPressed() {
 //    }

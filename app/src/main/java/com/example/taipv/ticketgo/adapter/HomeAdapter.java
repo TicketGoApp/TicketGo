@@ -70,7 +70,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ItemHoder itemHoder = (ItemHoder) holder;
             final GetEventHot ticket = listTicket.get(position);
             itemHoder.setData(ticket);
-            MyApplication.log("adapter", listTicket.get(4).getName());
+            MyApplication.log("adapter", listTicket.get(4).getName()+listTicket.get(0).getInformation_name());
 
             itemHoder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

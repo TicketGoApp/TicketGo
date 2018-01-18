@@ -9,7 +9,7 @@ import java.util.List;
 public class GetEventHot {
     private String start_date;
     private String end_date;
-
+    private String information_name;
     private String name;
     private String logo;
     private String event_local_name;
@@ -31,6 +31,14 @@ public class GetEventHot {
         this.city_name = city_name;
         this.url_name = url_name;
         this.tickets_name = tickets_name;
+    }
+
+    public String getInformation_name() {
+        return information_name;
+    }
+
+    public void setInformation_name(String information_name) {
+        this.information_name = information_name;
     }
 
     public String getName() {
