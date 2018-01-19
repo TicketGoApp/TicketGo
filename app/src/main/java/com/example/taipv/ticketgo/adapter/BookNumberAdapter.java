@@ -24,6 +24,13 @@ import java.util.List;
  * Email: tai97nd@gmail.com
  */
 
+
+/**
+ * Author: Phùng Tài NeverGiveUp
+ * Date: 1/16/2018
+ * Email: tai97nd@gmail.com
+ */
+
 public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     IPassPos iPassPos;
     private Context context;

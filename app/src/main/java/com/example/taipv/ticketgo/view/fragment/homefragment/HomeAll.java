@@ -142,4 +142,3 @@ public class HomeAll extends BasicFragment implements IHomeView, HomeActivity.On
 //    public boolean allowBackPressed() {
 //    }
 }
-

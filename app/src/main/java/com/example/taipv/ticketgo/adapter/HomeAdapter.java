@@ -1,12 +1,10 @@
 package com.example.taipv.ticketgo.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,20 +15,21 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.taipv.MyApplication;
-import com.example.taipv.sdk.callbacks.IPassPos;
 import com.example.taipv.sdk.callbacks.ItemClickListener;
+
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.GetEventHot;
-import com.example.taipv.ticketgo.model.GetNumberTicket;
 import com.example.taipv.ticketgo.view.activity.home.EventDetailActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by taipv on 1/3/2018
+
+/** 
+ * Created by taipv on 1/3/2018 
  */
+
 
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "xxx";
