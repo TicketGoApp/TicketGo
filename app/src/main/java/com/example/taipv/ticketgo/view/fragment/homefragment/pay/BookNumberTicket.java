@@ -68,7 +68,7 @@ public class BookNumberTicket extends BasicFragment implements IHomeView,IPassPo
         homePresenter=new HomePresenter(this);
         ((PayEvent)getActivity()).setTitleActionBar("Đặt vé");
         initRecyclerView(view);
-        homePresenter.getHome();
+        homePresenter.getHome(1);
 
         super.onViewCreated(view, savedInstanceState);
     }

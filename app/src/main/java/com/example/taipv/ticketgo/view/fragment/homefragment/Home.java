@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,8 @@ import com.example.taipv.ticketgo.view.activity.HomeActivity;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 import com.example.taipv.ticketgo.view.fragment.BasicFragment;
 
+import java.util.ArrayList;
 import java.util.List;
-
- 
 
 
 public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBackPressedListener {
@@ -37,6 +37,7 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
     HomePresenter homePresenter;
     HomeAdapter homeAdapter;
     RecyclerView recyclerView;
+    List<GetEventHot> getList;
 
     public static Home newInstance(String titlePager) {
 
@@ -46,7 +47,6 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Nullable
     @Override
@@ -69,8 +69,10 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         homePresenter = new HomePresenter(this);
+        getList = new ArrayList<>();
+        homePresenter.getHome(1);
+        homeAdapter=new HomeAdapter(getContext());
         initRecyclerview(view);
-        homePresenter.getHome();
         ((HomeActivity) getActivity()).setOnBackPressedListener(this);
     }
 
@@ -78,9 +80,10 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
     private void initRecyclerview(View view) {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getFragment().getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getFragment().getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        scrollListener=new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+        recyclerView.setAdapter(homeAdapter);
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 loadNextDataFromApi(page);
@@ -89,9 +92,18 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
         recyclerView.addOnScrollListener(scrollListener);
     }
 
-    private void loadNextDataFromApi(int page) {
-        Toast.makeText(getContext(), "Say Load"+page, Toast.LENGTH_SHORT).show();
+    private void loadNextDataFromApi(final int page) {
+//        Toast.makeText(getContext(), "Say Load" + page, Toast.LENGTH_SHORT).show();
         showProgressBar(1);
+        new Handler().postDelayed(new Runnable() {
+    @Override
+    public void run() {
+        homePresenter.getHome(page);
+        closeProgressBar();
+
+
+    }
+},1000);
 
     }
 
@@ -99,6 +111,7 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
     public void onGetSuscess(List<GetEventHot> list) {
         initFragment(list);
         closeProgressBar();
+
     }
 
     @Override
@@ -106,14 +119,14 @@ public class Home extends BasicFragment implements IHomeView, HomeActivity.OnBac
     }
 
     private void initFragment(List<GetEventHot> list) {
-        homeAdapter = new HomeAdapter(getContext(), list);
+//        this.getList.addAll(list);
+        homeAdapter.addItem(list);
         homeAdapter.notifyDataSetChanged();
-
-        recyclerView.setAdapter(homeAdapter);
+        Log.d(TAG, "initFragment: " + getList.size());
         homeAdapter.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position, Object object) {
-                MyApplication.log("say ok",position+"");
+                MyApplication.log("say ok", position + "");
             }
         });
     }

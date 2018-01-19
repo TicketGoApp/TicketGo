@@ -23,14 +23,16 @@ import retrofit2.Response;
  */
 
 public abstract class HomeModel extends AbsICmd {
-    public HomeModel() {
+    int page= 1;
+    public HomeModel(int page) {
+        this.page=page;
         run();
     }
 
     @Override
     protected void invoke() {
         IGetEvent getTicket = ApiFactory.getAPIFB(IGetEvent.class);
-        Call<GetEvent> call = getTicket.getEvent(1);
+        Call<GetEvent> call = getTicket.getEvent(page);
         call.enqueue(new Callback<GetEvent>() {
             @Override
             public void onResponse(Call<GetEvent> call, Response<GetEvent> response) {

@@ -39,11 +39,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ItemClickListener itemClickListener;
     private final int EMPTY_TYPE = 0;
     private final int ITEM_TYPE = 1;
-
-    public HomeAdapter(Context context, List<GetEventHot> listTicket) {
+    public HomeAdapter(Context context) {
         this.context = context;
-        this.listTicket = listTicket;
-
+        listTicket=new ArrayList<>();
     }
 
 
@@ -64,10 +62,12 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+            if(listTicket.size()>0){
 
         if (holder instanceof ItemHoder) {
             ItemHoder itemHoder = (ItemHoder) holder;
-            final GetEventHot ticket = listTicket.get(position);
+                final GetEventHot ticket = listTicket.get(position);
+
             itemHoder.setData(ticket);
             MyApplication.log("adapter", listTicket.get(4).getName()+listTicket.get(0).getInformation_name());
 
@@ -110,6 +110,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             EmptyHolder emptyHolder = (EmptyHolder) holder;
             emptyHolder.setData();
         }
+            }
+
     }
 
     @Override
@@ -184,5 +186,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         }
         return list;
+    }
+    public void addItem(List<GetEventHot>list){
+        listTicket.addAll(list);
+        notifyDataSetChanged();
     }
 }

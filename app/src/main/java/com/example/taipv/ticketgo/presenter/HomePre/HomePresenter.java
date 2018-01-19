@@ -25,7 +25,7 @@ public class HomePresenter  extends BasicPresenter{
     private void iCmd(final Object...objects){
         switch ((int)objects[0]){
             case 1:
-                new HomeModel(){
+                new HomeModel((int)objects[1]){
 
                     @Override
                     protected void getFB() {
@@ -50,12 +50,12 @@ public class HomePresenter  extends BasicPresenter{
     protected void getSessionSuccess(Object... params) {
 
     }
-    public void getHome(){
+    public void getHome(int page){
         if (!NetworkUtils.isConnected()) {
             showError(Constants.ERROR_NO_INTERNET);
             return;
         }
-        view.showProgressBar(1);
-        iCmd(1);
+//        view.showProgressBar(1);
+        iCmd(1,page);
     }
 }
