@@ -13,6 +13,7 @@ import com.example.taipv.ticketgo.model.server.TokenFacebook;
 import com.example.taipv.ticketgo.presenter.BasicPresenter;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.activity.login.LoginActivity;
+import com.example.taipv.ticketgo.view.activity.profile.ContactUs;
 import com.facebook.login.LoginManager;
 
 /**
@@ -83,5 +84,8 @@ public class ProfilePre extends BasicPresenter {
         }
         view.showProgressBar(1);
         iCmd(9,id,email,name,image);
+    }
+    public void getContactUs(){
+        iCmd(7);
     }
 }

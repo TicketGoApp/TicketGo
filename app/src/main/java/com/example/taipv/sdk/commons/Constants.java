@@ -17,6 +17,9 @@ public class Constants {
     public static final int ERROR_NO_INTERNET = -3;
     public static final int ERROR_UNKOW = -1;
     public static final int ERROR_EMPTY = 404;
+    public static String LinkAPP="https://ticketgo.vn/";
+    public static String Email="ticketgo.vn@gmail.com";
+    public static String Facebook="https://www.facebook.com/ticketgo.vn/";
     /*
     * End Error Code
     * */

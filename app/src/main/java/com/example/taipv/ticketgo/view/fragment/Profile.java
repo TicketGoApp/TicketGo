@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,11 +18,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.Glide;
 import com.example.taipv.MyApplication;
 import com.example.taipv.sdk.callbacks.ItemClickListener;
+import com.example.taipv.sdk.commons.Constants;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.adapter.ProfileAdapter;
 import com.example.taipv.ticketgo.model.GetInfoFB;
@@ -32,7 +35,11 @@ import com.example.taipv.ticketgo.util.PrefUtil;
 import com.example.taipv.ticketgo.util.SharedUtils;
 import com.example.taipv.ticketgo.view.activity.inf.profile.IProfileView;
 import com.example.taipv.ticketgo.view.activity.login.LoginActivity;
+import com.example.taipv.ticketgo.view.activity.profile.AboutUs;
+import com.example.taipv.ticketgo.view.activity.profile.ContactUs;
 import com.facebook.login.LoginManager;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +57,9 @@ public class Profile extends BasicFragment implements IProfileView {
     String image;
     Integer[] icon = {R.drawable.history, R.drawable.adduser, R.drawable.share, R.drawable.mail, R.drawable.star, R.drawable.setup, R.drawable.info, R.drawable.phone, R.drawable.exit};
     String[] title = {"Lịch sử", "Mời bạn bè", "Chia sẻ", "Góp ý", "Đánh giá app TicketGo", "Cài đặt", "Giới thiệu", "Liên hệ ngay", "Đăng xuất"};
+    ShareDialog shareDialog;
+    ShareLinkContent shareLinkContent;
+
 
     public static Profile newInstance(long id, String email, String name, String image) {
 
@@ -105,6 +115,7 @@ public class Profile extends BasicFragment implements IProfileView {
         profilePre = new ProfilePre(this);
         initRecyclerView(view);
         profilePre.getLogout();
+//        profilePre.getContactUs();
         initProfile(view);
 
 
@@ -115,32 +126,33 @@ public class Profile extends BasicFragment implements IProfileView {
         tvUserName = view.findViewById(R.id.tv_username);
         tvEmail = view.findViewById(R.id.tv_email);
         imgAvatar = view.findViewById(R.id.img_avatar);
-        if(SharedUtils.getInstance().getStringValue("name")==null||SharedUtils.getInstance().getStringValue("name").equals("")){
+        if (SharedUtils.getInstance().getStringValue("name") == null || SharedUtils.getInstance().getStringValue("name").equals("")) {
             if (name != null && !name.equals("")) {
                 tvUserName.setText(name);
                 tvEmail.setText(email);
-                Log.d("email", "initProfile: "+email);
+                Log.d("email", "initProfile: " + email);
                 Glide.with(getFragment()).load(image).into(imgAvatar);
-                DownloadTask downloadTask=new DownloadTask(getActivity());
+                DownloadTask downloadTask = new DownloadTask(getActivity());
                 downloadTask.execute(image);
                 SharedUtils.getInstance().putStringValue("name", name);
                 SharedUtils.getInstance().putStringValue("emailFB", email);
                 SharedUtils.getInstance().putStringValue("image", image);
 //                Log.d("put",SharedUtils.getInstance().getStringValue("email"));
-                if(SharedUtils.getInstance().getStringValue("pathImage")==null){
-                    MyApplication.log("pathImage","null");
-                }else {
-                    String x=SharedUtils.getInstance().getStringValue("pathImage");
-                    MyApplication.log("pathImage","OK");
+                if (SharedUtils.getInstance().getStringValue("pathImage") == null) {
+                    MyApplication.log("pathImage", "null");
+                } else {
+                    String x = SharedUtils.getInstance().getStringValue("pathImage");
+                    MyApplication.log("pathImage", "OK");
                 }
             } else {
                 tvUserName.setText("Nuller");
                 tvEmail.setText("Nuller");
             }
-        }else {
-            Log.d("put",""+SharedUtils.getInstance().getStringValue("email"));
+        } else {
+            Log.d("put", "" + SharedUtils.getInstance().getStringValue("email"));
 
         }
+        shareDialog = new ShareDialog(getActivity());
 
     }
 
@@ -166,6 +178,44 @@ public class Profile extends BasicFragment implements IProfileView {
             @Override
             public void onItemClick(int position, Object object) {
                 switch (position) {
+                    case 2:
+                        if (shareDialog.canShow(ShareLinkContent.class)) {
+                            shareLinkContent = new ShareLinkContent.Builder()
+                                    .setContentUrl(Uri.parse(Constants.LinkAPP))
+                                    .build();
+                        }
+                        shareDialog.show(shareLinkContent);
+                        break;
+                    case 3:
+//                        Intent i = new Intent(Intent.ACTION_SEND);
+//                        i.setType("message/rfc822");
+//                        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{Constants.Email});
+//                        i.putExtra(Intent.EXTRA_SUBJECT, "Test App");
+//                        i.putExtra(Intent.EXTRA_TEXT   , "Test App");
+//                        try {
+//                            startActivity(Intent.createChooser(i, "Send mail..."));
+//                        } catch (android.content.ActivityNotFoundException ex) {
+//                            Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+//                        }.0
+                        Intent i = new Intent(Intent.ACTION_SEND);
+                        String[] recipients = {Constants.Email};
+                        i.putExtra(Intent.EXTRA_EMAIL, recipients);
+                        i.putExtra(Intent.EXTRA_SUBJECT, "Phản hồi TicketGo App");
+                        i.putExtra(Intent.EXTRA_TEXT, "Nội dung");
+                        i.putExtra(Intent.EXTRA_CC, "mailcc@gmail.com");
+                        i.setType("text/html");
+                        i.setPackage("com.google.android.gm");
+                        startActivity(Intent.createChooser(i, "Send mail"));
+                        break;
+                    case 6:
+                        Intent intentabout = new Intent(getActivity(), AboutUs.class);
+                        getActivity().startActivity(intentabout);
+                        break;
+                    case 7:
+                        Intent intent1 = new Intent(Utils.getApp().getApplicationContext(), ContactUs.class);
+                        getActivity().startActivity(intent1);
+                        break;
+
                     case 8:
 
                         LoginManager.getInstance().logOut();
@@ -194,16 +244,16 @@ public class Profile extends BasicFragment implements IProfileView {
 //            tvEmail.setText(email);
 //            Glide.with(getFragment()).load(image).into(imgAvatar);
 //            MyApplication.log("share","null");
-        }else {
+        } else {
             tvUserName.setText(SharedUtils.getInstance().getStringValue("name"));
-            if(SharedUtils.getInstance().getStringValue("emailFB")==null){
-                Log.d("email profile","null");
+            if (SharedUtils.getInstance().getStringValue("emailFB") == null) {
+                Log.d("email profile", "null");
             }
             tvEmail.setText(SharedUtils.getInstance().getStringValue("emailFB"));
-            String path=SharedUtils.getInstance().getStringValue("pathImage");
+            String path = SharedUtils.getInstance().getStringValue("pathImage");
             imgAvatar.setImageDrawable(Drawable.createFromPath(path));
 
-            MyApplication.log("share",SharedUtils.getInstance().getStringValue("name")+SharedUtils.getInstance().getStringValue("email")+SharedUtils.getInstance().getStringValue("pathImage"));
+            MyApplication.log("share", SharedUtils.getInstance().getStringValue("name") + SharedUtils.getInstance().getStringValue("email") + SharedUtils.getInstance().getStringValue("pathImage"));
         }
     }
 
@@ -213,7 +263,7 @@ public class Profile extends BasicFragment implements IProfileView {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         if (name != null & email != null & image != null) {
 
-            Log.d("profile", "onPause:email "+email);
+            Log.d("profile", "onPause:email " + email);
         }
 
     }

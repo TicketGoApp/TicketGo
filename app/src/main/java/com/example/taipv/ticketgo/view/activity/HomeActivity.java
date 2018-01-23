@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.GetInfoFB;
@@ -21,8 +23,9 @@ import com.example.taipv.ticketgo.view.fragment.Profile;
 
 public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener,IProfileView {
     BottomNavigationView botnavi;
-
-    private ActionBar toolbar;
+    TextView mTitle;
+    Toolbar toolbar;
+//    private ActionBar toolbar;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     private final static String TAG_FRAGMENT2 = "TAG_FRAGMENT2";
     protected OnBackPressedListener onBackPressedListener;
@@ -31,14 +34,27 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+         toolbar =  findViewById(R.id.toolbar);
+         mTitle =  toolbar.findViewById(R.id.toolbar_title);
+         toolbar.setTitle("");
+        setSupportActionBar(toolbar);
 
-
-        toolbar = getSupportActionBar();
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        setSupportActionBar(toolbar);
+//        Toolbar toolbar=findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        final ActionBar ab = getSupportActionBar();
+//        //ab.setHomeAsUpIndicator(R.drawable.ic_menu); // set a custom icon for the default home button
+//        ab.setDisplayShowHomeEnabled(true); // show or hide the default home button
+//        ab.setDisplayHomeAsUpEnabled(true);
+//        ab.setDisplayShowCustomEnabled(true); // enable overriding the default toolbar layout
+//        ab.setDisplayShowTitleEnabled(false); // disable the default title element here (for centered title)
+//        toolbar = getSupportActionBar();
         profile=new ProfilePre(this);
         botnavi = findViewById(R.id.navigation);
         botnavi.setOnNavigationItemSelectedListener(this);
 
-        toolbar.setTitle("Shop");
+//        toolbar.setTitle("Home");
         loadFragment(new HomeMain(), TAG_FRAGMENT);
 
     }
@@ -67,22 +83,22 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         Fragment fragment;
         switch (item.getItemId()) {
             case R.id.navigation_shop:
-                toolbar.setTitle("Home");
+                mTitle.setText("Home");
                 fragment = new HomeMain();
                 loadFragment(fragment, TAG_FRAGMENT);
                 return true;
             case R.id.navigation_gifts:
-                toolbar.setTitle("News");
+                mTitle.setText("News");
                 fragment = new News();
                 loadFragment(fragment, TAG_FRAGMENT2);
                 return true;
             case R.id.navigation_cart:
-                toolbar.setTitle("Oder");
+                mTitle.setText("Oder");
                 fragment = new MyOder();
                 loadFragment(fragment, TAG_FRAGMENT2);
                 return true;
             case R.id.navigation_profile:
-                toolbar.setTitle("IProfileView");
+//                toolbar.setTitle("IProfileView");
                 fragment = new Profile();
                 loadFragment(fragment, TAG_FRAGMENT2);
                 getProfile();
