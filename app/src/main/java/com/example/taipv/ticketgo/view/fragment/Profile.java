@@ -1,5 +1,6 @@
 package com.example.taipv.ticketgo.view.fragment;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -206,6 +207,21 @@ public class Profile extends BasicFragment implements IProfileView {
                         i.setType("text/html");
                         i.setPackage("com.google.android.gm");
                         startActivity(Intent.createChooser(i, "Send mail"));
+                        break;
+                    case 4:
+                        Uri uri = Uri.parse("market://details?id=" + Constants.PlayStore);
+                        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                        // To count with Play market backstack, After pressing back button,
+                        // to taken back to our application, we need to add following flags to intent.
+                        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        try {
+                            startActivity(goToMarket);
+                        } catch (ActivityNotFoundException e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("http://play.google.com/store/apps/details?id=" + Constants.PlayStore)));
+                        }
                         break;
                     case 6:
                         Intent intentabout = new Intent(getActivity(), AboutUs.class);

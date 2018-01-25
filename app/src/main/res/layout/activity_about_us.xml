@@ -7,4 +7,32 @@
     android:id="@+id/linea_about_us"
     tools:context="com.example.taipv.ticketgo.view.activity.profile.AboutUs">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp250"
+                android:src="@drawable/teamwork"
+                />
+            <TextView
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ticket Go"
+                android:textColor="@color/green"
+                android:gravity="center_horizontal"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ticket Go là website thương mại điện tử trực thuộc công ty cổ phần công nghệ ALADDIN với hoài bão tạo nên một bước đột phá lớn trong lĩnh vực  bán vé sự kiện trực tuyến hàng đầu mang đến sự lựa chọn mua vé sự kiện dễ dàng, nhanh chóng và tiện lợi cho khách hàng mà không cần phải xếp hàng hay phải chờ đợi dưới trời mưa hay nắng nóng."
+                />
+
 </LinearLayout>

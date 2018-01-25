@@ -19,7 +19,14 @@ public class Constants {
     public static final int ERROR_EMPTY = 404;
     public static String LinkAPP="https://ticketgo.vn/";
     public static String Email="ticketgo.vn@gmail.com";
-    public static String Facebook="https://www.facebook.com/ticketgo.vn/";
+    public static String Facebook="ticketgo.vn/";
+    public static String Youtube="UCtm90qWLPvNaDbYcsbkEO4A";
+    public static String Twiter="https://twitter.com/TicketGo_vn";
+    public static String Intasgram;
+    public static String PlayStore="com.garena.gaslite";
+    public static String Pinteres="";
+    public static String Linked="";
+
     /*
     * End Error Code
     * */

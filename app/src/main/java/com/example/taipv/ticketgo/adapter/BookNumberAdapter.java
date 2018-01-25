@@ -109,6 +109,15 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if (count[0] > 0) {
                         count[0]--;
                         btnReduce.setBackgroundColor(Color.TRANSPARENT);
+
+                        totalIncrease+=Integer.parseInt(tvNumberTicket.getText().toString());
+//                    MyApplication.log("money", count[0]+"");
+                        totalMoney=count[0];
+                        a=(SharedUtils.getInstance().getIntValue("Tong"))-(count[0]-(count[0]-1))*ticketName.getPrice();
+                        SharedUtils.getInstance().putIntValue("Tong",a);
+                        MyApplication.log("logTOng",SharedUtils.getInstance().getIntValue("Tong")+1+"");
+                        iPassPos.passPos((SharedUtils.getInstance().getIntValue("Tong")+1));
+
                         tvNumberTicket.setText(String.valueOf(count[0]));
                         if (count[0] == 0) {
                             btnReduce.setBackgroundColor(Color.GRAY);

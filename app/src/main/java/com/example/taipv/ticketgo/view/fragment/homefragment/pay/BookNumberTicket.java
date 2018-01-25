@@ -66,7 +66,7 @@ public class BookNumberTicket extends BasicFragment implements IHomeView,IPassPo
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         homePresenter=new HomePresenter(this);
-        ((PayEvent)getActivity()).setTitleActionBar("Đặt vé");
+//        ((PayEvent)getActivity()).setTitleActionBar("Đặt vé");
         initRecyclerView(view);
         homePresenter.getHome(1);
 
@@ -86,6 +86,7 @@ public class BookNumberTicket extends BasicFragment implements IHomeView,IPassPo
 //        MyApplication.log("so luong",list.get(0).getTickets_name().get(0).getPrice()+"price");
         recyclerView.setAdapter(adapter);
         adapter.setiPassPos(this);
+//        closeProgressBar();
     }
 
     @Override
@@ -94,6 +95,7 @@ public class BookNumberTicket extends BasicFragment implements IHomeView,IPassPo
 //        MyApplication.log("so luong",list.get(0).getTickets_name().get(0).getPrice()+"price");
         recyclerView.setAdapter(adapter);
         adapter.setiPassPos(this);
+//        closeProgressBar();
     }
 
     @Override

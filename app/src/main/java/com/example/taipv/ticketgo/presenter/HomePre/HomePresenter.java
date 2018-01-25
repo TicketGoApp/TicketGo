@@ -8,6 +8,7 @@ import com.example.taipv.ticketgo.model.server.HomeModel;
 import com.example.taipv.ticketgo.presenter.BasicPresenter;
 import com.example.taipv.ticketgo.view.activity.inf.IHomeView;
 
+import java.security.MessageDigest;
 import java.util.List;
 
 /**
@@ -51,7 +52,7 @@ public class HomePresenter  extends BasicPresenter{
 
     }
     public void getHome(int page){
-        if (!NetworkUtils.isConnected()) {
+        if (!NetworkUtils.isConnected())    {
             showError(Constants.ERROR_NO_INTERNET);
             return;
         }
