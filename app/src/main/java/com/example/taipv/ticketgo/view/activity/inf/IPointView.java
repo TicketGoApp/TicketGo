@@ -3,6 +3,7 @@ package com.example.taipv.ticketgo.view.activity.inf;
 import android.support.v4.app.Fragment;
 
 import com.example.taipv.ticketgo.model.GetEventHot;
+import com.example.taipv.ticketgo.model.GetInfoFB;
 
 import java.util.List;
 

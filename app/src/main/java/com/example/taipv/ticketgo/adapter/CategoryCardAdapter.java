@@ -9,8 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.taipv.MyApplication;
+import com.example.taipv.sdk.callbacks.ItemClickListener;
 import com.example.taipv.ticketgo.R;
 import com.example.taipv.ticketgo.model.GetCategoryCard;
+import com.example.taipv.ticketgo.view.activity.inf.IPassPos;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ import java.util.List;
 public class CategoryCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<GetCategoryCard>list;
     Context context;
-
+    ItemClickListener iPassPos;
     public CategoryCardAdapter(List<GetCategoryCard> list, Context context) {
         this.list = list;
         this.context = context;
@@ -39,20 +41,23 @@ public class CategoryCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if(list.size()>0){
 
-            GetCategoryCard categoryCard=list.get(position);
+            final GetCategoryCard categoryCard=list.get(position);
             ItemHolder itemHolder= (ItemHolder) holder;
             itemHolder.setData(categoryCard);
             itemHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     MyApplication.toast(list.get(position).getCategory());
+                    iPassPos.onItemClick(position,categoryCard);
                 }
             });
         }else {
             Toast.makeText(context, "NULL", Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void setiPassPos(ItemClickListener iPassPos){
+        this.iPassPos=  iPassPos;
+    }
     @Override
     public int getItemCount() {
         return list.size();

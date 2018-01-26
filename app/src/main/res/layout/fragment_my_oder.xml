@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-    <com.example.taipv.ticketgo.util.OpenTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_card_title_name"
@@ -39,7 +40,7 @@
             android:src="@drawable/ticketbasic" />
 
 
-    <com.example.taipv.ticketgo.util.OpenTextView
+    <TextView
         android:id="@+id/tv_name_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
         android:textColor="@color/white_100"
         android:textStyle="bold" />
 
-    <com.example.taipv.ticketgo.util.OpenTextView
+    <TextView
         android:id="@+id/tv_point_point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +80,7 @@
             android:layout_height="@dimen/dp30"
             android:src="@drawable/coin"
             />
-        <com.example.taipv.ticketgo.util.OpenTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/basic"
@@ -88,7 +89,7 @@
             android:textStyle="bold"
             android:textSize="15sp"
             />
-        <com.example.taipv.ticketgo.util.OpenTextView
+        <TextView
             android:id="@id/tv_point_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +97,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             />
-        <com.example.taipv.ticketgo.util.OpenTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/go_point"
@@ -110,12 +111,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
-        <com.example.taipv.ticketgo.util.OpenTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/member_since"
             />
-        <com.example.taipv.ticketgo.util.OpenTextView
+        <TextView
             android:id="@+id/member_since"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

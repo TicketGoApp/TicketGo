@@ -60,6 +60,7 @@ public class BookNumberAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TicketName ticketName = listTicket.get(position);
         SharedUtils.getInstance().putIntValue("Tong",totalMoney);
         itemHoder.setData(ticketName);
+        iPassPos.passPos(position);
     }
 
     public void setiPassPos(IPassPos iPassPos) {
