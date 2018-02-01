@@ -8,7 +8,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:503553002861:android:21133bd781c19f68",
         "android_client_info": {
-          "package_name": "com.example.taipv.ticketgo"
+          "package_name": "vn.ticketgo.taipv.ticketgo"
         }
       },
       "oauth_client": [
@@ -16,7 +16,7 @@
           "client_id": "503553002861-e1hvissi9i28kjkr4cprbermig0leqct.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.taipv.ticketgo",
+            "package_name": "vn.ticketgo.taipv.ticketgo",
             "certificate_hash": "557aedd071400c7f8226b05d9c27242f8df3c795"
           }
         },

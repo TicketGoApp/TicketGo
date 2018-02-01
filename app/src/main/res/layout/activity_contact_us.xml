@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.taipv.ticketgo.view.activity.profile.ContactUs">
+    tools:context="vn.ticketgo.taipv.ticketgo.vn.example.taipv.ticketgo.view.activity.profile.ContactUs">
 
     <ImageView
         android:id="@+id/avatar_contact"

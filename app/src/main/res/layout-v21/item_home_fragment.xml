@@ -39,11 +39,10 @@
                 android:paddingLeft="@dimen/dp10"
                 android:paddingRight="@dimen/dp10"
                 android:paddingTop="@dimen/dp10"
+                android:text="Title"
                 android:textColor="#111"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:text="Title"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_decription"
@@ -51,9 +50,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_title_ticket"
                 android:layout_marginRight="10dp"
-                android:text="xin chao day la phan mo ta"
                 android:paddingBottom="@dimen/dp5"
                 android:paddingLeft="@dimen/dp10"
+                android:text="xin chao day la phan mo ta"
                 android:textColor="@color/colorGray"
                 android:textSize="14sp" />
 
@@ -63,25 +62,37 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_decription"
                 android:layout_marginRight="10dp"
-                android:text="@string/ha_noi"
+                android:background="@drawable/tag_city"
                 android:paddingBottom="@dimen/dp5"
                 android:paddingLeft="@dimen/dp10"
+                android:text="@string/ha_noi"
                 android:textColor="@color/viewBg"
-                android:background="@drawable/tag_city"
                 android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_decription"
-                android:layout_toRightOf="@id/tv_location"
                 android:layout_marginRight="10dp"
-                android:text="@string/price"
+                android:layout_toRightOf="@id/tv_location"
+                android:background="@drawable/tag_price"
                 android:paddingBottom="@dimen/dp5"
                 android:paddingLeft="@dimen/dp10"
+                android:text="@string/price"
                 android:textColor="@color/black"
-                android:background="@drawable/tag_price"
                 android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/img_save_ticket"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_decription"
+                android:layout_marginRight="@dimen/dp30"
+                android:src="@drawable/download"
+
+                />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

@@ -3,186 +3,274 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp200"
-        android:scaleType="fitXY"
-        />
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:paddingTop="@dimen/dp20"
+        android:paddingBottom="@dimen/dp20"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="9">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_share_ticket"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center"
+                android:src="@drawable/share" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chia sẻ" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_save_ticket"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center"
+                android:src="@drawable/download"
+
+                />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp20"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã lưu sự kiện" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_addCalendar"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center"
+
+                android:src="@drawable/addcalendar"
+
+                />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp20"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm vào lịch" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_titleEvent"
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="Title"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
-<LinearLayout
-    android:layout_marginLeft="10dp"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:layout_marginRight="@dimen/dp10"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="@dimen/dp40"
-        android:layout_height="@dimen/dp40"
-        android:src="@drawable/time"
-        android:scaleType="fitXY"
-        />
-    <TextView
-        android:id="@+id/tv_timeEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="19:30"
-        android:textSize="17sp"
-        android:textColor="@color/black_100"
-        android:layout_marginTop="@dimen/dp5"
-        />
+        android:textStyle="bold" />
 
-</LinearLayout>
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_marginRight="@dimen/dp10"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_width="@dimen/dp40"
             android:layout_height="@dimen/dp40"
-            android:src="@drawable/calendar"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="5dp"
             android:scaleType="fitXY"
-            />
+            android:src="@drawable/time" />
+
+        <TextView
+            android:id="@+id/tv_timeEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="19:30"
+            android:textColor="@color/black_100"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/calendar" />
+
         <TextView
             android:id="@+id/tv_date_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="14/02/2018"
-            android:textSize="17sp"
-            android:textColor="@color/black_100"
             android:layout_marginTop="@dimen/dp5"
-            />
+            android:text="14/02/2018"
+            android:textColor="@color/black_100"
+            android:textSize="17sp" />
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_marginRight="@dimen/dp10"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_width="@dimen/dp40"
             android:layout_height="@dimen/dp40"
-            android:src="@drawable/location"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="5dp"
             android:scaleType="fitXY"
-            />
+            android:src="@drawable/location" />
+
         <TextView
             android:id="@+id/tv_location_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Erato Hà Nội , Số 30 Đoàn Thị Điểm , Hà Nội"
-            android:textSize="17sp"
-            android:textColor="@color/black_100"
             android:layout_marginTop="@dimen/dp5"
-            />
+            android:text="Erato Hà Nội , Số 30 Đoàn Thị Điểm , Hà Nội"
+            android:textColor="@color/black_100"
+            android:textSize="17sp" />
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_marginRight="@dimen/dp10"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_width="@dimen/dp40"
             android:layout_height="@dimen/dp40"
-            android:src="@drawable/infomation"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="5dp"
             android:scaleType="fitXY"
-            />
+            android:src="@drawable/infomation" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >       <TextView
-            android:id="@+id/tv_infomation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giới Thiệu Về Sự Kiện"
-            android:textSize="17sp"
-            android:textColor="@color/black_100"
-            android:layout_marginTop="@dimen/dp5"
-            />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_infomation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="Giới Thiệu Về Sự Kiện"
+                android:textColor="@color/black_100"
+                android:textSize="17sp" />
+
             <TextView
                 android:id="@+id/tv_sumary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dalcroze Eurhythmics là phương pháp Giáo dục Âm nhạc đặc biệt trên thế giới dành cho cả trẻ em và người lớn, dựa trên quan điểm rằng cơ thể con người là nguồn gốc của mọi ý tưởng về âm nhạc. Với triết lý coi phản ứng tự nhiên của cơ thể và cảm xúc là nền tảng. "
-                android:textSize="12sp"
                 android:textColor="@color/black_100"
-                />
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <ImageView
-                android:layout_marginRight="@dimen/dp10"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp40"
-                android:src="@drawable/origin"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_marginTop="5dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/origin" />
+
             <TextView
                 android:id="@+id/tv_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nhà Tổ Chức"
-                android:textSize="17sp"
-                android:textColor="@color/black_100"
                 android:layout_marginTop="@dimen/dp5"
-                />
+                android:text="Nhà Tổ Chức"
+                android:textColor="@color/black_100"
+                android:textSize="17sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/img_origined"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="@dimen/dp100"
-                android:src="@drawable/contentavatar"
-                android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
-                />
+                android:scaleType="fitXY"
+                android:src="@drawable/contentavatar" />
+
             <TextView
                 android:id="@+id/tv_origined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="R.M.P ( Rap music party) là một show diễn thường niên với cái chất đường phố, một chút bụi bặm xuồng xã nhưng cũng không kém phần thi vị..."
-                android:textSize="12sp"
-                android:textColor="@color/black_100"
                 android:layout_marginLeft="@dimen/dp10"
-                />
+                android:text="R.M.P ( Rap music party) là một show diễn thường niên với cái chất đường phố, một chút bụi bặm xuồng xã nhưng cũng không kém phần thi vị..."
+                android:textColor="@color/black_100"
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

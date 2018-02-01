@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/dp10"
+            android:paddingBottom="@dimen/dp20"
             >
 
             <ImageView
@@ -87,14 +88,18 @@
                 android:textColor="@color/black"
                 android:background="@drawable/tag_price"
                 android:textSize="14sp" />
+
             <ImageView
+                android:id="@+id/img_save_ticket"
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp40"
-                android:src="@drawable/coin"
-                android:layout_toRightOf="@id/tv_price"
+                android:src="@drawable/download"
+                android:layout_alignParentRight="true"
                 android:layout_below="@id/tv_decription"
+                android:layout_marginRight="@dimen/dp30"
 
                 />
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

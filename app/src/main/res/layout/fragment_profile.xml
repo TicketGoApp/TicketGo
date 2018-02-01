@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_container"
-    tools:context="com.example.taipv.ticketgo.view.fragment.Profile">
+    tools:context="vn.ticketgo.taipv.ticketgo.vn.example.taipv.ticketgo.view.fragment.Profile">
 
     <!-- TODO: Update blank fragment layout -->
 

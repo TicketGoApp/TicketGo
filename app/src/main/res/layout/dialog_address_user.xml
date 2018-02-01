@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingTop="@dimen/dp10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp20"
+                >
+<EditText
+    android:id="@+id/edt_name_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Họ tên"
+    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp20"
+                >
+                <EditText
+                    android:id="@+id/edt_phone_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Số điện thoại"
+                    android:inputType="phone"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp20"
+                >
+    <EditText
+        android:id="@+id/edt_email_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp20"
+                >
+    <AutoCompleteTextView
+        android:id="@+id/actv_tinh_thanh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tỉnh/Thành"
+        />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp20"
+                >
+
+                <EditText
+                    android:id="@+id/edt_address_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Địa chỉ" />
+            </android.support.design.widget.TextInputLayout>
+            <CheckBox
+                android:id="@+id/ck_home_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đặt làm địa chỉ mặc định"
+                />
+            <CheckBox
+                android:id="@+id/ck_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đây là địa chỉ công ty"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+<android.support.v7.widget.CardView
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80">
+        <Button
+            android:id="@+id/btn_save_address"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:text="LƯU ĐỊA CHỈ"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+</RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/dp60"
     android:orientation="vertical"
-    tools:context="com.example.taipv.ticketgo.view.fragment.MyOder">
+    tools:context="vn.ticketgo.taipv.ticketgo.vn.example.taipv.ticketgo.view.fragment.MyOder">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">

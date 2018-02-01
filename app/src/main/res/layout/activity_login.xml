@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
 
-    tools:context="com.example.taipv.ticketgo.view.activity.login.LoginActivity"
+    tools:context="vn.ticketgo.taipv.ticketgo.vn.example.taipv.ticketgo.view.activity.login.LoginActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <ImageView
